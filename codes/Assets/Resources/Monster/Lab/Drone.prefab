@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 419754939191486624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -106.06, y: -23.8651, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_State: 0
-  m_HPBar: {fileID: 0}
+  m_HPBar: {fileID: 1301316228526720326}
   TraceDist: 10
   AttackDist: 2
 --- !u!95 &5463529380002289811

@@ -25,7 +25,7 @@ public class Drone_Ctrl : MonoBehaviour
     #endregion
 
     #region Global
-    bool IsDead = false;
+    public bool IsDead = false; // 접근 제한자 수정
     Rigidbody2D m_Rd;
     Animator m_Anim;
     SpriteRenderer m_Sprite;
@@ -101,7 +101,7 @@ public class Drone_Ctrl : MonoBehaviour
                         Vector3 a_Vec = a_MoveDir.normalized * a_MoveVel * Time.deltaTime;
                         transform.Translate(a_Vec, Space.World);
 
-                        //방향전환
+                        // 방향 전환
                         if (a_MoveDir.x > 0)
                             m_Sprite.flipX = false;
                         else
@@ -117,7 +117,7 @@ public class Drone_Ctrl : MonoBehaviour
                 {
                     m_Anim.SetBool("IsAttack", true);
 
-                    //플레이어를 바라보면서 방향전환
+                    // 플레이어를 바라보며 방향 전환
                     if (playerTr.position.x > transform.position.x)
                         m_Sprite.flipX = false;
                     else
@@ -146,7 +146,6 @@ public class Drone_Ctrl : MonoBehaviour
 
     }
 
-
     public void TakeDamage(float Dmg)
     {
         if (m_CurHP < 0.0f)
@@ -164,6 +163,7 @@ public class Drone_Ctrl : MonoBehaviour
         if (m_CurHP <= 0)
         {
             m_Anim.SetTrigger("IsDie");
+            IsDead = true; // 몬스터가 죽었음을 표시
             StartCoroutine(DeathDel(1.2f));
         }
 
@@ -176,5 +176,4 @@ public class Drone_Ctrl : MonoBehaviour
         Game_Mgr.Inst.AddGold(10);
     }
     #endregion
-
 }

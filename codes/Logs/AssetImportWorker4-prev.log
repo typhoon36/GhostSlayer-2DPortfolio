@@ -1,0 +1,597 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.15f1 (b58023a2b463) revision 11894819'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22631) 64bit Education' Language: 'ko' Physical Memory: 16236 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity\Hub\Editor\2022.3.15f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker4
+-projectPath
+C:/Users/leeyeonjun/Desktop/unityproject/My project (3)
+-logFile
+Logs/AssetImportWorker4.log
+-srvPort
+65002
+Successfully changed project path to: C:/Users/leeyeonjun/Desktop/unityproject/My project (3)
+C:/Users/leeyeonjun/Desktop/unityproject/My project (3)
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [5972] Host "[IP] 211.206.242.112 [Port] 0 [Flags] 2 [Guid] 3544644458 [EditorId] 3544644458 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-41TLBQ1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [5972] Host "[IP] 211.206.242.112 [Port] 0 [Flags] 2 [Guid] 3544644458 [EditorId] 3544644458 [Version] 1048832 [Id] WindowsEditor(7,DESKTOP-41TLBQ1) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+[Physics::Module] Initialized MultithreadedJobDispatcher with 15 workers.
+Refreshing native plugins compatible for Editor in 9.44 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.15f1 (b58023a2b463)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/leeyeonjun/Desktop/unityproject/My project (3)/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: NVIDIA GeForce RTX 3060 Laptop GPU (ID=0x2560)
+    Vendor:   NVIDIA
+    VRAM:     5996 MB
+    Driver:   32.0.15.6109
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56792
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity/Hub/Editor/2022.3.15f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.007546 seconds.
+- Loaded All Assemblies, in  0.335 seconds
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.255 seconds
+Domain Reload Profiling: 589ms
+	BeginReloadAssembly (110ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (1ms)
+	RebuildCommonClasses (32ms)
+	RebuildNativeTypeToScriptingClass (12ms)
+	initialDomainReloadingComplete (56ms)
+	LoadAllAssembliesAndSetupDomain (123ms)
+		LoadAssemblies (108ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (122ms)
+			TypeCache.Refresh (121ms)
+				TypeCache.ScanAssembly (107ms)
+			ScanForSourceGeneratedMonoScriptInfo (0ms)
+			ResolveRequiredComponents (0ms)
+	FinalizeReload (256ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (198ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (7ms)
+			SetLoadedEditorAssemblies (7ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (2ms)
+			ProcessInitializeOnLoadAttributes (138ms)
+			ProcessInitializeOnLoadMethodAttributes (43ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+Begin MonoManager ReloadAssembly
+- Loaded All Assemblies, in  0.495 seconds
+Refreshing native plugins compatible for Editor in 2.45 ms, found 2 plugins.
+Native extension for WindowsStandalone target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.546 seconds
+Domain Reload Profiling: 1039ms
+	BeginReloadAssembly (156ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (7ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (27ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (14ms)
+	initialDomainReloadingComplete (37ms)
+	LoadAllAssembliesAndSetupDomain (258ms)
+		LoadAssemblies (234ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (105ms)
+			TypeCache.Refresh (82ms)
+				TypeCache.ScanAssembly (71ms)
+			ScanForSourceGeneratedMonoScriptInfo (17ms)
+			ResolveRequiredComponents (5ms)
+	FinalizeReload (546ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (408ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (5ms)
+			SetLoadedEditorAssemblies (4ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (64ms)
+			ProcessInitializeOnLoadAttributes (288ms)
+			ProcessInitializeOnLoadMethodAttributes (43ms)
+			AfterProcessingInitializeOnLoad (5ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.06 seconds
+Refreshing native plugins compatible for Editor in 3.06 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3429 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 65 unused Assets / (131.7 KB). Loaded Objects now: 3896.
+Memory consumption went from 136.8 MB to 136.7 MB.
+Total: 6.260200 ms (FindLiveObjects: 0.308500 ms CreateObjectMapping: 0.109600 ms MarkObjects: 5.645400 ms  DeleteObjects: 0.195300 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:CustomObjectIndexerAttribute: 43b350a4d6e6d1791af0b5038c4bea17 -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:SearchIndexIgnoredProperties: e643bd26f0fe6173181afceb89e7c659 -> 
+  custom:AudioImporter_EditorPlatform: d09bf68614088b80899f8185d706f6e7 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 437478.746738 seconds.
+  path: Assets/05.Images/Main_UI/UI_Groups/Buttons/Boxes/Box/Blue.psd
+  artifactKey: Guid(fb70d5bd2df014db6a44971ae2446966) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Main_UI/UI_Groups/Buttons/Boxes/Box/Blue.psd using Guid(fb70d5bd2df014db6a44971ae2446966) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '289d7a4dbc47e7f230220ff5b5bdb815') in 0.100388 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.273438 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00000.png
+  artifactKey: Guid(b196e59349ba08a409b9d1cd43caab58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00000.png using Guid(b196e59349ba08a409b9d1cd43caab58) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '97715e13284104f98b951cd5cdf115f0') in 0.020976 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.003339 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00002.png
+  artifactKey: Guid(d0a80b98b86b85045b6b302eb1c017f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00002.png using Guid(d0a80b98b86b85045b6b302eb1c017f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '676a5ffe06a9e0949da837e146704001') in 0.018355 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005893 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00006.png
+  artifactKey: Guid(716adc50cefef6e4fb6054d388f32b00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00006.png using Guid(716adc50cefef6e4fb6054d388f32b00) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'df1b672bab6e8b35ff7aa189bca576e0') in 0.025350 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.003191 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00007.png
+  artifactKey: Guid(976bbbc81144f7d4e9d76fe68be7fa39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00007.png using Guid(976bbbc81144f7d4e9d76fe68be7fa39) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6e233fa921c3e039f51970e944f010a') in 0.019842 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005012 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00011.png
+  artifactKey: Guid(e7434b94cacd2384b89911600dd0d7a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00011.png using Guid(e7434b94cacd2384b89911600dd0d7a5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4df4bf85eea8f0f4944ac8d471f3ab2b') in 0.020322 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005015 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00015.png
+  artifactKey: Guid(f0a67ed9c15f6e84389631ed55ea9dc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00015.png using Guid(f0a67ed9c15f6e84389631ed55ea9dc2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1976dc7b22bccc95bbbbc57cc7788e03') in 0.019239 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001151 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00018.png
+  artifactKey: Guid(73cc7d300a3c9fe4190f91eac305f5a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00018.png using Guid(73cc7d300a3c9fe4190f91eac305f5a2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f891300afc56f594f72730be638bb4e3') in 0.021819 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.003928 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00019.png
+  artifactKey: Guid(b2c65ef193ee65c4687a51a573236ef8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00019.png using Guid(b2c65ef193ee65c4687a51a573236ef8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0551df0a0d9ef4fe8245f970f0c5aac8') in 0.017689 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000322 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00022.png
+  artifactKey: Guid(170b0bfaedd2ad44ba5c86d092cb1cd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00022.png using Guid(170b0bfaedd2ad44ba5c86d092cb1cd9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '60e01dcac3019ed437b21a9f3a131deb') in 0.017959 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.002543 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00025.png
+  artifactKey: Guid(86b5d6ce59c692842bb0ebc87674eb9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00025.png using Guid(86b5d6ce59c692842bb0ebc87674eb9a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55c0e09180b54b80b1c08674b3a48773') in 0.018821 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005244 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00029.png
+  artifactKey: Guid(a52f971526970624687b4db75854b250) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00029.png using Guid(a52f971526970624687b4db75854b250) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dfb6be5a2e6e16cf52e2b0c20fdad2d') in 0.020374 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.145107 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00031.png
+  artifactKey: Guid(bec1c86a9db0a204c97a71d82c96ff63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00031.png using Guid(bec1c86a9db0a204c97a71d82c96ff63) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed9d10800f6a44a08c44353e3ce40660') in 0.018172 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005334 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00035.png
+  artifactKey: Guid(4e2f9860e2cf7ba48b270c4d9b90c5c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00035.png using Guid(4e2f9860e2cf7ba48b270c4d9b90c5c8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0c3e9b169a4a2c93ce29cb0d0ffc12a0') in 0.019733 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.013535 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00037.png
+  artifactKey: Guid(96c6762da834b1b419a443d284c4b439) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00037.png using Guid(96c6762da834b1b419a443d284c4b439) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a88a32647bf96c5561db8d227c1ae3d1') in 0.016950 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005741 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00041.png
+  artifactKey: Guid(a5e33c40678efc34aa67be036f43108d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00041.png using Guid(a5e33c40678efc34aa67be036f43108d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '20a64ebf5f856c991b36d3bd22273981') in 0.017982 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005917 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00045.png
+  artifactKey: Guid(80d212c1f8020ec4fa5238bfa234cb9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00045.png using Guid(80d212c1f8020ec4fa5238bfa234cb9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00ac002922276cccb9bbd26f797dfb27') in 0.018493 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.030406 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00049.png
+  artifactKey: Guid(5fc91a79abe394d498fdafbb3c4f321e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00049.png using Guid(5fc91a79abe394d498fdafbb3c4f321e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '58a8fc6306016db35c9f5a26cf0c573b') in 0.017844 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005280 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00053.png
+  artifactKey: Guid(52262b85cbb7ae5429c14938d3dbdab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00053.png using Guid(52262b85cbb7ae5429c14938d3dbdab9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd57ef30d036e541f57dccd4dd4fa2b0c') in 0.018470 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001242 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00056.png
+  artifactKey: Guid(4f9802079541bab4da7ff7de98e75936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower1/BlueFlower_00056.png using Guid(4f9802079541bab4da7ff7de98e75936) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '06b1cdc23ac93b866398a50d6f056e20') in 0.020042 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.006501 seconds.
+  path: Assets/05.Images/Main_UI/UI_Groups/Buttons/Circles/PNG/BlueLight.png
+  artifactKey: Guid(e3488ed4c162f41b1b2f0f94146bdcb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Main_UI/UI_Groups/Buttons/Circles/PNG/BlueLight.png using Guid(e3488ed4c162f41b1b2f0f94146bdcb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '03caaf87a4fd6eb5a3e1d98bf664c4f3') in 0.027005 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001429 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00001.png
+  artifactKey: Guid(f2d7e4c5c45527d4ab4aac31b7123ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00001.png using Guid(f2d7e4c5c45527d4ab4aac31b7123ac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4878b022f14c8cef4ce5f3e72d4a0436') in 0.019855 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005967 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00005.png
+  artifactKey: Guid(fd50a5939ee585f469b298e7ff89a810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00005.png using Guid(fd50a5939ee585f469b298e7ff89a810) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '472be8aa551586a583d907a5244fbcf9') in 0.018434 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001653 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00008.png
+  artifactKey: Guid(f25fdf4e220a840418b1d5491a178394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00008.png using Guid(f25fdf4e220a840418b1d5491a178394) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fd909adaf94747fca29930fac78a765f') in 0.017584 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.001738 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00010.png
+  artifactKey: Guid(11002ca4f94e2ea4dbf9144821226f46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00010.png using Guid(11002ca4f94e2ea4dbf9144821226f46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b636d06cab7112a27a717ac07a64d83f') in 0.018633 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005278 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00014.png
+  artifactKey: Guid(a4d3b9019389fc54498222b708b98770) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00014.png using Guid(a4d3b9019389fc54498222b708b98770) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b48da50484006b40d7db4c53c3d3ea3') in 0.025839 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.033234 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00016.png
+  artifactKey: Guid(5256cd141ac8b2549a54b6c679d8d943) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00016.png using Guid(5256cd141ac8b2549a54b6c679d8d943) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b9f6a643553e9a38239c56ab0cc1f6a') in 0.018028 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000923 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00019.png
+  artifactKey: Guid(1447813a7a9e35c4584d0173a094566a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00019.png using Guid(1447813a7a9e35c4584d0173a094566a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41747d698e107cc2a72aa955314f4ec0') in 0.021106 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.004301 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00022.png
+  artifactKey: Guid(ca5dbd1d9564bec4db209d4df2e37909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00022.png using Guid(ca5dbd1d9564bec4db209d4df2e37909) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c82ceafdc87347560ed1098f58d3f89f') in 0.020555 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005068 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00026.png
+  artifactKey: Guid(7f6cb0e485bce7d4ea7ba7cc7c45a709) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00026.png using Guid(7f6cb0e485bce7d4ea7ba7cc7c45a709) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a03edb54fb53b1e673a00a52273f4de0') in 0.021561 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.006585 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00030.png
+  artifactKey: Guid(c74600c1a294d974b9f3cc62b39fb39c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00030.png using Guid(c74600c1a294d974b9f3cc62b39fb39c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '68bcf48bf0944b4ba03442595affea03') in 0.024074 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.007186 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00034.png
+  artifactKey: Guid(514fdb054386104428cf37d8cfb9cc3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00034.png using Guid(514fdb054386104428cf37d8cfb9cc3a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '85e557b5e960d1b9370aa883ff4c33b4') in 0.023216 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.004222 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00038.png
+  artifactKey: Guid(9f997afead6eb5b478863e6c458856b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00038.png using Guid(9f997afead6eb5b478863e6c458856b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '45d9ae702f7f8eb910df70fb4f4b9bb4') in 0.020482 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.037880 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00040.png
+  artifactKey: Guid(bc742cf75f439c84b9230d844300dd5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00040.png using Guid(bc742cf75f439c84b9230d844300dd5e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e76acca2b0899de15057fcba74aa7175') in 0.019924 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005787 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00044.png
+  artifactKey: Guid(5f16cd78d93c44040a77612fb1567666) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00044.png using Guid(5f16cd78d93c44040a77612fb1567666) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5dec7fc14f90313f55371b0644ec8c20') in 0.021233 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005089 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00048.png
+  artifactKey: Guid(f04409f9c86c1f54b8dd33c06e8f70d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00048.png using Guid(f04409f9c86c1f54b8dd33c06e8f70d1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a7c84ed5f9b194c10e55956e9bd3e9ab') in 0.020632 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.168186 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00052.png
+  artifactKey: Guid(a45a9622ec682664f80a227e88efa9df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00052.png using Guid(a45a9622ec682664f80a227e88efa9df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2da866602949fd49a05ddb804ec779dc') in 0.019177 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.003684 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00056.png
+  artifactKey: Guid(4c3fbecd04ac2144aae320b266948a6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00056.png using Guid(4c3fbecd04ac2144aae320b266948a6c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3efaeccea1be766233de5e734ee6aa8f') in 0.020879 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.013219 seconds.
+  path: Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00058.png
+  artifactKey: Guid(435ff23a41a57234b82683cecef50fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Forrest/Mossy Tileset/Plant Animations/BlueFlower2/BluePlantClosed_00058.png using Guid(435ff23a41a57234b82683cecef50fa7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a23a8dd4e573f7dd08af2a0e0c0e92bd') in 0.016599 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.005047 seconds.
+  path: Assets/05.Images/Main_UI/UI_Groups/GameScene/Table/PNG/BlurBackground.png
+  artifactKey: Guid(dfb4e5ad1f70042778b3bdabaa046d45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Main_UI/UI_Groups/GameScene/Table/PNG/BlurBackground.png using Guid(dfb4e5ad1f70042778b3bdabaa046d45) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4f61cdb6c77e466f47e2c2ddf9bf4521') in 0.043636 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/05.Images/Main_UI/UI_Groups/Popups/HeadlineBow/Bow.psd
+  artifactKey: Guid(841274c82569147b0aa266ba0c32c253) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Main_UI/UI_Groups/Popups/HeadlineBow/Bow.psd using Guid(841274c82569147b0aa266ba0c32c253) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c9dd4a95991794828811b3d77f3d76b') in 0.023796 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.014739 seconds.
+  path: Assets/05.Images/-01.Tema/Labs/Collections/Industrial Zone/3 Objects/Box2.png
+  artifactKey: Guid(d7dd4c01c37094742a1518c5ad7cd63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Labs/Collections/Industrial Zone/3 Objects/Box2.png using Guid(d7dd4c01c37094742a1518c5ad7cd63f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '984aee3b759d6f401de2fd83b4f9960f') in 0.018657 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000583 seconds.
+  path: Assets/05.Images/-01.Tema/Labs/Collections/Industrial Zone/3 Objects/Box5.png
+  artifactKey: Guid(44d1be251c6b9694fa61cc0747e0cfac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Labs/Collections/Industrial Zone/3 Objects/Box5.png using Guid(44d1be251c6b9694fa61cc0747e0cfac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c76c41318f521641b20b2f6bc01b0923') in 0.018512 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000018 seconds.
+  path: Assets/05.Images/Other_UI/Broken-removebg-preview.png
+  artifactKey: Guid(12aa7c6add4a6a74f8ec8b38d5835aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Other_UI/Broken-removebg-preview.png using Guid(12aa7c6add4a6a74f8ec8b38d5835aef) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3c0eea98580e3cfcc6eeebfc8337a648') in 0.020826 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/05.Images/Other_Props/Cemetery/brush.png
+  artifactKey: Guid(462efec1b85ab054fb8226cba25a9767) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Other_Props/Cemetery/brush.png using Guid(462efec1b85ab054fb8226cba25a9767) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ed69266ba11a2152d7f86a5065a0d65e') in 0.021418 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.002818 seconds.
+  path: Assets/05.Images/Main_UI/UI_Groups/Buttons/Bubble/BubblePNG.png
+  artifactKey: Guid(7fdace2e9e18a460ca13c1292b81a14a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Main_UI/UI_Groups/Buttons/Bubble/BubblePNG.png using Guid(7fdace2e9e18a460ca13c1292b81a14a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '78aef42d269c48312d8b8dcfe827a1d8') in 0.018266 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.002789 seconds.
+  path: Assets/05.Images/-01.Tema/Labs/Collections/bulkhead-walls/v1/layers/bulkhead-walls-platform.png
+  artifactKey: Guid(027c32c62e5006c41bc3befd83949f6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Labs/Collections/bulkhead-walls/v1/layers/bulkhead-walls-platform.png using Guid(027c32c62e5006c41bc3befd83949f6f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b1241cb6abe9e0a5a092c72997733130') in 0.020765 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 0.685342 seconds.
+  path: Assets/05.Images/Main_UI/UI_Groups/HomeScenePortrait/Animals/PNG/Cat.png
+  artifactKey: Guid(8ccc8ed4482db467bb1391a4696fdec2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Main_UI/UI_Groups/HomeScenePortrait/Animals/PNG/Cat.png using Guid(8ccc8ed4482db467bb1391a4696fdec2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '666fa33bcb3ea04c6c3d9cbd6e2b68e5') in 0.025855 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 3
+========================================================================
+Received Import Request.
+  Time since last request: 12.938457 seconds.
+  path: Assets/05.Images/-01.Tema/Labs/Sewer Canals
+  artifactKey: Guid(4d7ea60c7cc405248af5ab382f7ce287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Labs/Sewer Canals using Guid(4d7ea60c7cc405248af5ab382f7ce287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '67e548dc6339e8c283cf51b4f7f9438d') in 0.002470 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 0
+========================================================================
+Received Import Request.
+  Time since last request: 3.085709 seconds.
+  path: Assets/05.Images/-01.Tema/Labs/Sewer Canals/Assets/Props.png
+  artifactKey: Guid(4adf330e06c12054badbeb3a0107b039) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Labs/Sewer Canals/Assets/Props.png using Guid(4adf330e06c12054badbeb3a0107b039) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ee98a8f383b8e961fb846cea047609ec') in 0.044113 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 18
+========================================================================
+Received Import Request.
+  Time since last request: 1.849883 seconds.
+  path: Assets/05.Images/-01.Tema/Labs/Sewer Canals/Assets/Wall.png
+  artifactKey: Guid(d7ada58d03bb50845b5fd9b46aec3a25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/-01.Tema/Labs/Sewer Canals/Assets/Wall.png using Guid(d7ada58d03bb50845b5fd9b46aec3a25) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ea17e89b3de26e6ed2f83acf5832bb29') in 0.057328 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 17
+========================================================================
+Received Import Request.
+  Time since last request: 10.594942 seconds.
+  path: Assets/05.Images/Mobs/Forest/Bush/walk.png
+  artifactKey: Guid(cb9dab3f671d1c6478c014246947ef59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/05.Images/Mobs/Forest/Bush/walk.png using Guid(cb9dab3f671d1c6478c014246947ef59) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8240a3d67f874dd8785f05222f7f41dd') in 0.066247 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 10
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error: operation aborted. errorcode: 995, details: 스레드 종료 또는 응용 프로그램 요청 때문에 I/O 작업이 취소되었습니다.
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
