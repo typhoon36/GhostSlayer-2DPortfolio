@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,18 +18,17 @@ public class Bush_Ctrl : MonoBehaviour
     #endregion
 
     #region #Trace
-    //¼Óµµ Çâ»óÀ» À§ÇØ °¢Á¾ ÄÄÆ÷³ÍÆ®¸¦ º¯¼ö¿¡ ÇÒ´ç
+  
     private Transform monsterTr;
     private Transform playerTr;
 
-    //ÃßÀû »çÁ¤°Å¸®
     public float TraceDist = 10.0f;
-    //°ø°İ »çÁ¤°Å¸®
-    public float AttackDist = 1.5f; 
+    
+    public float AttackDist = 1.5f;
     #endregion
 
     #region Global
-    bool IsDead = false;
+    public bool IsDead = false; // ì ‘ê·¼ ìˆ˜ì¤€ì„ publicìœ¼ë¡œ ë³€ê²½
     Rigidbody2D m_Rd;
     Animator m_Anim;
     SpriteRenderer m_Sprite;
@@ -37,19 +36,19 @@ public class Bush_Ctrl : MonoBehaviour
 
     void Awake()
     {
-        //## ÃßÀû°Å¸®
+        
         TraceDist = 10.0f;
         AttackDist = 5.0f;
 
         m_CurHP = m_MaxHP;
 
-        //## ¸ó½ºÅÍÀÇ Transfor
+       
         monsterTr = this.gameObject.GetComponent<Transform>();
-        //ÃßÀû ´ë»ó Transform
+        
         GameObject playerObj = GameObject.FindWithTag("Player");
         if (playerObj != null) playerTr = playerObj.GetComponent<Transform>();
 
-        //½ºÇÁ¶óÀÌÆ®,¸®Áöµå¹Ùµğ,¾Ö´Ï¸ŞÀÌÅÍ ÄÄÆ÷³ÍÆ® ÇÒ´ç
+        
         m_Rd = GetComponent<Rigidbody2D>();
         m_Anim = GetComponent<Animator>();
         m_Sprite = GetComponent<SpriteRenderer>();
@@ -104,7 +103,7 @@ public class Bush_Ctrl : MonoBehaviour
                 break;
             case State.Trace:
                 {
-                    float a_MoveVel = 2.0f;   
+                    float a_MoveVel = 2.0f;
                     Vector3 a_MoveDir = playerTr.position - transform.position;
                     a_MoveDir.y = 0.0f;
 
@@ -113,7 +112,6 @@ public class Bush_Ctrl : MonoBehaviour
                         Vector3 a_Vec = a_MoveDir.normalized * a_MoveVel * Time.deltaTime;
                         transform.Translate(a_Vec, Space.World);
 
-                        //¹æÇâÀüÈ¯
                         if (a_MoveDir.x > 0)
                             m_Sprite.flipX = false;
                         else
@@ -129,7 +127,7 @@ public class Bush_Ctrl : MonoBehaviour
                 {
                     m_Anim.SetBool("IsAttack", true);
 
-                    //ÇÃ·¹ÀÌ¾î¸¦ ¹Ù¶óº¸¸é¼­ ¹æÇâÀüÈ¯
+                   
                     if (playerTr.position.x > transform.position.x)
                         m_Sprite.flipX = false;
                     else
@@ -190,6 +188,6 @@ public class Bush_Ctrl : MonoBehaviour
     }
     #endregion
 
-   
+
 
 }

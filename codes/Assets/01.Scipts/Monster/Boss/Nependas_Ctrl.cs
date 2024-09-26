@@ -293,8 +293,11 @@ public class Nependas_Ctrl : MonoBehaviour
             m_HPBar.fillAmount = m_CurHP / m_MaxHP;
 
         if (m_CurHP <= 0)
-        {
-            this.gameObject.SetActive(false);
+        { 
+            IsDead = true;
+            m_Anim.SetTrigger("IsDead");
+            Destroy(this.gameObject);
+            m_HPGroup.SetActive(false);
             m_NextPortal.gameObject.SetActive(true);
         }
 

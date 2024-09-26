@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class F_Spawner : MonoBehaviour
 {
+    #region Spawn Variables
     public GameObject[] MonObj;
     public Transform[] MonPos;
+    public float spawnInterval = 8f; // 스폰 간격
+    public float SpawnCheck = 10f; // 스폰 위치 확인 반경
+    public float MinDistanceBetweenMonsters = 20f; // 몬스터 간 최소 거리
 
     float m_SpDelta = 0.0f;
-    private List<Vector3> usedPositions = new List<Vector3>();
-
+    List<GameObject> MonList = new List<GameObject>();
+    #endregion
     #region #Singleton Pattern
 
     public static F_Spawner Inst = null;
@@ -25,31 +29,60 @@ public class F_Spawner : MonoBehaviour
 
         if (m_SpDelta < 0.0f)
         {
-            m_SpDelta = 0.2f; // 스폰 주기를 1초로 설정
+            m_SpDelta = spawnInterval;
 
-            GameObject Mon = null;
-            int RandMon = Random.Range(0, MonObj.Length);
-            int RandPos = Random.Range(0, MonPos.Length);
-            Vector3 spawnPosition = MonPos[RandPos].position;
-
-            Mon = Instantiate(MonObj[RandMon]);
-
-            // MonObj[2]인 경우 y 값을 MonPos의 y 값에 2를 더한 값으로 설정
-            if (RandMon == 2)
+            // 모든 위치에 하나씩 스폰
+            for (int i = 0; i < MonPos.Length; i++)
             {
-                spawnPosition.y += 5.0f;
-            }
+                Vector3 a_SpawnPos = MonPos[i].position;
 
-            // 몬스터가 겹치지 않도록 위치 확인
-            if (!usedPositions.Contains(spawnPosition))
-            {
-                usedPositions.Add(spawnPosition);
-                Mon.transform.position = spawnPosition;
-            }
-            else
-            {
-                Destroy(Mon);
+                if (!IsAliveCheck(a_SpawnPos) && !IsOverlapCheck(a_SpawnPos))
+                {
+                    int a_Rand = Random.Range(0, MonObj.Length);
+                    GameObject a_Mon = Instantiate(MonObj[a_Rand], a_SpawnPos, Quaternion.identity);
+                    MonList.Add(a_Mon);
+                }
             }
         }
+
+        MonList.RemoveAll(monster => monster == null ||
+        (monster.GetComponent<Tree_Ctrl>()?.IsDead ?? false) ||
+        (monster.GetComponent<Slime_Ctrl>()?.IsDead ?? false) ||
+        (monster.GetComponent<Bush_Ctrl>()?.IsDead ?? false));
     }
+
+    #region 스폰위치에 살아있는지 체크
+    bool IsAliveCheck(Vector3 position)
+    {
+        foreach (GameObject monster in MonList)
+        {
+            if (monster != null &&
+                Vector3.Distance(monster.transform.position, position) < SpawnCheck)
+            {
+                if (!(monster.GetComponent<Tree_Ctrl>()?.IsDead ?? true) &&
+                    !(monster.GetComponent<Slime_Ctrl>()?.IsDead ?? true) &&
+                    !(monster.GetComponent<Bush_Ctrl>()?.IsDead ?? true))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    #endregion
+
+    #region 스폰위치에 다른 몬스터가 있는지 체크
+    bool IsOverlapCheck(Vector3 position)
+    {
+        foreach (GameObject monster in MonList)
+        {
+            if (monster != null &&
+                Vector3.Distance(monster.transform.position, position) < MinDistanceBetweenMonsters)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    #endregion
 }

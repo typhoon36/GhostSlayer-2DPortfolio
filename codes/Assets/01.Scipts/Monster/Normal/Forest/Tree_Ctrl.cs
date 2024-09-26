@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -34,7 +34,7 @@ public class Tree_Ctrl : MonoBehaviour
     #endregion
 
     #region Global
-    bool IsDead = false;
+    public bool IsDead = false; // ì ‘ê·¼ ìˆ˜ì¤€ì„ publicìœ¼ë¡œ ë³€ê²½
     SpriteRenderer m_Sprite;
     Animator m_Anim;
     Rigidbody2D m_Rd;
@@ -42,17 +42,17 @@ public class Tree_Ctrl : MonoBehaviour
 
     void Awake()
     {
-        //## ÃßÀû°Å¸®
+ 
         m_AttackDist = 12.0f;
 
         m_CurHP = m_MaxHP;
 
-        //## ¸ó½ºÅÍÀÇ Transfor
+
         m_MonsterTr = this.gameObject.GetComponent<Transform>();
-        //ÃßÀû ´ë»ó Transform
+
         m_PlayerTr = GameObject.FindWithTag("Player").GetComponent<Transform>();
 
-        //½ºÇÁ¶óÀÌÆ®,¸®Áöµå¹Ùµğ,¾Ö´Ï¸ŞÀÌÅÍ ÄÄÆ÷³ÍÆ® ÇÒ´ç
+  
         m_Rd = GetComponent<Rigidbody2D>();
         m_Anim = GetComponent<Animator>();
         m_Sprite = GetComponent<SpriteRenderer>();
@@ -60,8 +60,8 @@ public class Tree_Ctrl : MonoBehaviour
 
     #region AI
     void FixedUpdate()
-    {       
-        //¸ÕÀú Ã¼Å© ÇÏ°í Çàµ¿
+    {
+        
         CheckMon();
         MonAction();
     }
@@ -91,12 +91,12 @@ public class Tree_Ctrl : MonoBehaviour
             m_State = State.Idle;
         }
 
-        //ÇÃ·¹ÀÌ¾î À§Ä¡ ÃßÀû ¿¬Ãâ
+
         if (m_PlayerTr.position.x < m_MonsterTr.position.x)
             m_Sprite.flipX = true;
         else
             m_Sprite.flipX = false;
-        
+
     }
 
     void MonAction()
@@ -134,11 +134,11 @@ public class Tree_Ctrl : MonoBehaviour
             a_BulletSc.gameObject.SetActive(true);
             a_BulletSc.BulletSpawn(m_BulletPos.transform.position, a_Target, BulletSpeed);
 
-            //## È¸Àü
+           
             a_BulletSc.transform.right = new Vector3(-a_Target.x, -a_Target.y, 0.0f);
 
             BulletCount++;
-            if (BulletCount < 7) //ÀÏ¹İ°ø°İ 7¹ø±îÁöÀÇ °ø°İ ÁÖ±â
+            if (BulletCount < 7) 
             {
                 Shot_Time = 0.7f;
             }

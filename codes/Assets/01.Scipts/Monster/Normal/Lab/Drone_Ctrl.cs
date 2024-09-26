@@ -24,8 +24,16 @@ public class Drone_Ctrl : MonoBehaviour
     public float AttackDist = 2f;
     #endregion
 
+    #region Bullet
+    public GameObject m_Bullet;
+    public Transform m_BulletPos;
+    private float Shot_Time = 0.0f;
+    private float BulletSpeed = 10.0f;
+    private int BulletCount = 0;
+    #endregion
+
     #region Global
-    public bool IsDead = false; // 접근 제한자 수정
+    public bool IsDead = false;
     Rigidbody2D m_Rd;
     Animator m_Anim;
     SpriteRenderer m_Sprite;
@@ -34,6 +42,7 @@ public class Drone_Ctrl : MonoBehaviour
     void Awake()
     {
         TraceDist = 10.0f;
+        AttackDist = 5f;
         m_CurHP = m_MaxHP;
 
         monsterTr = this.gameObject.GetComponent<Transform>();
@@ -123,8 +132,44 @@ public class Drone_Ctrl : MonoBehaviour
                     else
                         m_Sprite.flipX = true;
 
+                    BulletUpdate(); 
                 }
                 break;
+        }
+    }
+    #endregion
+
+    #region Bullet
+    void BulletUpdate()
+    {
+        Shot_Time -= Time.deltaTime;
+
+        if (Shot_Time <= 0)
+        {
+            Vector3 a_Target =
+                playerTr.transform.position - m_BulletPos.transform.position;
+
+            a_Target.z = 0.0f;
+            a_Target.Normalize();
+
+            Bullet_Ctrl a_BulletSc = BulletPool_Mgr.Inst.GetEn2BulletPool();
+
+            a_BulletSc.gameObject.SetActive(true);
+            a_BulletSc.BulletSpawn(m_BulletPos.transform.position, a_Target, BulletSpeed);
+
+            a_BulletSc.transform.right = new Vector3(-a_Target.x, -a_Target.y, 0.0f);
+
+            BulletCount++;
+            if (BulletCount < 2)
+            {
+                Shot_Time = 0.7f;
+            }
+            else
+            {
+                BulletCount = 0;
+                Shot_Time = 2.0f;
+                m_State = State.Idle;
+            }
         }
     }
     #endregion
@@ -143,7 +188,6 @@ public class Drone_Ctrl : MonoBehaviour
             m_Anim.SetTrigger("IsHurt");
             TakeDamage(10);
         }
-
     }
 
     public void TakeDamage(float Dmg)
@@ -166,7 +210,6 @@ public class Drone_Ctrl : MonoBehaviour
             IsDead = true; // 몬스터가 죽었음을 표시
             StartCoroutine(DeathDel(1.2f));
         }
-
     }
 
     IEnumerator DeathDel(float a_Val)

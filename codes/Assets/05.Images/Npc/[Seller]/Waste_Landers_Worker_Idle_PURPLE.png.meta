@@ -290,27 +290,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Waste_Landers_Worker_Idle_PURPLE_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 38
-        width: 55
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d5c518e8a86e6b4409d7a25f8037d601
-      internalID: 1890840531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []

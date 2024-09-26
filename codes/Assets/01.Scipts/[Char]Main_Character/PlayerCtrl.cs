@@ -47,6 +47,7 @@ public class PlayerCtrl : MonoBehaviour
     GameObject m_Chair = null;
     GameObject m_Witch = null;
     GameObject m_Crow = null;
+    GameObject m_Robot = null;
     #endregion
 
     #region Singleton
@@ -161,13 +162,29 @@ public class PlayerCtrl : MonoBehaviour
         }
         #endregion
 
-        #region # 제한
+        #region Robot과 상호작용
+        if (m_Robot != null && Input.GetKeyDown(KeyCode.F))
+        {
+            Game_Mgr.Inst.m_RDialoguePanel.SetActive(true);
+        }
+        #endregion
+
+        #region # 좌표 제한
         if (-35 > this.transform.position.y)
         {
             gameObject.SetActive(false);
             Game_Mgr.Inst.Death();
         }
         #endregion
+    }
+
+    void FixedUpdate()
+    {
+        // m_ShotTime 감소
+        if (m_ShotTime > 0)
+        {
+            m_ShotTime -= Time.fixedDeltaTime;
+        }
     }
 
     void AHeal()
@@ -181,13 +198,6 @@ public class PlayerCtrl : MonoBehaviour
     void OnApplicationQuit()
     {
         // 게임 종료 시 현재 위치를 저장
-        GlobalValue.g_SpawnPosition = transform.position;
-        GlobalValue.SaveGameData();
-    }
-
-    void OnDisable()
-    {
-        // 플레이어가 비활성화될 때 현재 위치를 저장
         GlobalValue.g_SpawnPosition = transform.position;
         GlobalValue.SaveGameData();
     }
@@ -316,23 +326,15 @@ public class PlayerCtrl : MonoBehaviour
         m_ShotTime = 2.0f;
     }
 
-    void FixedUpdate()
-    {
-        // m_ShotTime 감소
-        if (m_ShotTime > 0)
-        {
-            m_ShotTime -= Time.fixedDeltaTime;
-        }
-    }
+ 
 
 
     //------ 충돌 및 데미지 관련
     #region 충돌 & 데미지
     void OnCollisionEnter2D(Collision2D coll)
     {
-        if (coll.gameObject.tag == "Forest" ||
-            coll.gameObject.tag == "Lab" ||
-            coll.gameObject.tag == "Fort")
+        if (coll.gameObject.layer == LayerMask.NameToLayer("Forest") ||
+            coll.gameObject.layer == LayerMask.NameToLayer("Lab"))
         {
             IsDJump = false;
         }
@@ -340,24 +342,22 @@ public class PlayerCtrl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
+        #region Damage
         if (coll.gameObject.tag == "Boss")
-        {
             OnDamaged(coll.transform.position);
-        }
+
 
         else if (coll.gameObject.tag == "Monster")
-        {
             OnDamaged(coll.transform.position);
-        }
-        else if(coll.gameObject.tag == "Enermy_Bullet")
-        {
+
+        else if (coll.gameObject.tag == "Enermy_Bullet")
             OnDamaged(coll.transform.position);
-        }
+
 
         else if (coll.gameObject.tag == "Trap")
-        {
             OnDamaged(coll.transform.position);
-        }
+        #endregion
+
 
         else if (coll.gameObject.tag == "Portal")
         {
@@ -367,53 +367,54 @@ public class PlayerCtrl : MonoBehaviour
                 m_Portal = portal;
             }
         }
+
+        #region NPCS
         else if (coll.gameObject.tag == "Seller")
-        {
             m_Seller = coll.gameObject;
-        }
+
         else if (coll.gameObject.tag  == "Witch")
-        {
             m_Witch = coll.gameObject;
-        }
+
 
         else if (coll.gameObject.tag == "Crow")
-        {
             m_Crow = coll.gameObject;
-        }
+
+        else if (coll.gameObject.tag == "Robot")
+            m_Robot = coll.gameObject;
+
 
         else if (coll.gameObject.tag == "Chair")
-        {
             m_Chair = coll.gameObject;
-        }
+        #endregion
+
     }
 
     void OnTriggerExit2D(Collider2D coll)
     {
+        #region NPCS
         if (coll.gameObject.tag == "Portal")
-        {
             m_Portal = null;
-        }
+
         else if (coll.gameObject.tag == "Seller")
-        {
             m_Seller = null;
-        }
+
         else if (coll.gameObject.tag == "Chair")
-        {
-            m_Chair = null; // Chair 오브젝트 해제
-        }
+            m_Chair= null;
+
         else if (coll.gameObject.tag == "Witch")
-        {
-            m_Witch = null; // Witch 오브젝트 해제
-        }
+            m_Witch = null;
+
 
         else if (coll.gameObject.tag == "Crow")
-        {
-            m_Crow = null; // Crow 오브젝트 해제
-        }
+            m_Crow = null;
 
+        else if (coll.gameObject.tag == "Robot")
+            m_Robot = null;
+        #endregion
     }
 
     //# 데미지 처리
+    #region Damage
     void OnDamaged(Vector2 a_TargetPos)
     {
         if (m_GhostEff.IsGhosting) return;
@@ -438,5 +439,6 @@ public class PlayerCtrl : MonoBehaviour
     {
         m_Sprite.color = new Color(1, 1, 1, 1);
     }
+    #endregion
     #endregion
 }

@@ -12,20 +12,16 @@ public class Load_Mgr : MonoBehaviour
     public Slider Progress_bar;
 
 
-
-
-
-    // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(LoadScene()); 
+        StartCoroutine(LoadingScene()); 
     }
 
 
-    IEnumerator LoadScene()
+    IEnumerator LoadingScene()
     {
         yield return null;
-        AsyncOperation Oper = SceneManager.LoadSceneAsync("Forest");
+        AsyncOperation Oper = SceneManager.LoadSceneAsync("Tema");
         Oper.allowSceneActivation = false;
 
 

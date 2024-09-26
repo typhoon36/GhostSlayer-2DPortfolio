@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class L_Spawner : MonoBehaviour
 {
+    #region Spawn Variables
     public GameObject[] MonObj;
     public Transform[] MonPos;
     public float spawnInterval = 3f; // 스폰 간격
-    public float spawnCheckRadius = 10f; // 스폰 위치 확인 반경
+    public float SpawnCheck = 10f; // 스폰 위치 확인 반경
 
-    private float m_SpDelta = 0.0f;
-    private List<GameObject> spawnedMonsters = new List<GameObject>();
+    float m_SpDelta = 0.0f;
+    List<GameObject> MonList = new List<GameObject>();
+    #endregion
 
     #region #Singleton Pattern
 
@@ -32,30 +34,36 @@ public class L_Spawner : MonoBehaviour
             // 모든 위치에 하나씩 스폰
             for (int i = 0; i < MonPos.Length; i++)
             {
-                Vector3 spawnPosition = MonPos[i].position;
+                Vector3 a_SpawnPos = MonPos[i].position;
 
-                if (!IsPositionOccupiedOrAlive(spawnPosition))
+                if (!IsAliveCheck(a_SpawnPos))
                 {
-                    int RandMon = Random.Range(0, MonObj.Length);
-                    GameObject Mon = Instantiate(MonObj[RandMon], spawnPosition, Quaternion.identity);
-                    spawnedMonsters.Add(Mon);
+                    int a_Rand = Random.Range(0, MonObj.Length);
+                    GameObject a_Mon = Instantiate(MonObj[a_Rand], a_SpawnPos,
+                        Quaternion.identity);
+                    MonList.Add(a_Mon);
                 }
             }
         }
 
-        // Clean up the list by removing destroyed monsters
-        spawnedMonsters.RemoveAll(monster => monster == null ||
+
+        MonList.RemoveAll(monster => monster == null ||
         (monster.GetComponent<Drone_Ctrl>()?.IsDead ?? false));
     }
 
-    bool IsPositionOccupiedOrAlive(Vector3 position)
+    #region 스폰위치에 살아있는지 체크
+    bool IsAliveCheck(Vector3 position)
     {
-        foreach (GameObject monster in spawnedMonsters)
+        //Foreach로 모든 몬스터를 순회
+        foreach (GameObject monster in MonList)
         {
-            if (monster != null && Vector3.Distance(monster.transform.position, position) < spawnCheckRadius)
+            //몬스터가 있고,거리를 계산하여 스폰체크 반경내에 살아있는 몬스터가 있는지
+            if (monster != null &&
+                Vector3.Distance(monster.transform.position, position) < SpawnCheck)
             {
-                Drone_Ctrl droneCtrl = monster.GetComponent<Drone_Ctrl>();
-                if (droneCtrl != null && !droneCtrl.IsDead)
+                //있다면 컴포넌트 가져오고 죽었다면 true 반환
+                Drone_Ctrl a_Obj = monster.GetComponent<Drone_Ctrl>();
+                if (a_Obj != null && !a_Obj.IsDead)
                 {
                     return true;
                 }
@@ -63,4 +71,5 @@ public class L_Spawner : MonoBehaviour
         }
         return false;
     }
+    #endregion
 }

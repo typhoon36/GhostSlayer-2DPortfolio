@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class Fade_Mgr : MonoBehaviour
 {
-    bool IsFadeOut = false; //나갈 때 연출할 건지의 여부
+    public bool IsFadeOut = false; //나갈 때 연출할 건지의 여부
     public bool IsFadeIn = false;   //들어올 때 연출할 건지의 여부
 
     //--- Fade In Out 관련 변수들...

@@ -209,6 +209,9 @@ MonoBehaviour:
   m_HPBar: {fileID: 1301316228526720326}
   TraceDist: 10
   AttackDist: 2
+  m_Bullet: {fileID: 615222608795539203, guid: bff084f0b3221004abb1092891999910, type: 3}
+  m_BulletPos: {fileID: 5470417589238736559}
+  IsDead: 0
 --- !u!95 &5463529380002289811
 Animator:
   serializedVersion: 5

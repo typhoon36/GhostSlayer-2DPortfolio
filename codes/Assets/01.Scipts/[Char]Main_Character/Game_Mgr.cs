@@ -35,10 +35,12 @@ public class Game_Mgr : MonoBehaviour
     //gold
     int m_CurGold = 0;
 
-    //Witch - Dialog
+    #region Dialog
     [Header("Dialog")]
     public GameObject m_DialogPanel;
     public GameObject m_CDialoguePanel;
+    public GameObject m_RDialoguePanel;
+    #endregion
 
     #region Singleton
     public static Game_Mgr Inst;
@@ -161,7 +163,9 @@ public class Game_Mgr : MonoBehaviour
                 GameObject player = GameObject.FindWithTag("Player");
                 if (player != null)
                 {
-                    player.transform.position = GlobalValue.g_SpawnPosition;
+                    player.transform.position = new Vector3(122.87f, -23.26f, 0);
+                    GlobalValue.g_SpawnPosition = player.transform.position;
+                    GlobalValue.SaveGameData();
                 }
             });
         }

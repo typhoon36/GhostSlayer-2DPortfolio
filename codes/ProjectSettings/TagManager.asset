@@ -16,6 +16,7 @@ TagManager:
   - Witch
   - Chair
   - Crow
+  - Robot
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - Water
   - UI
   - Forest
-  - 
+  - Lab
   - 
   - 
   - 

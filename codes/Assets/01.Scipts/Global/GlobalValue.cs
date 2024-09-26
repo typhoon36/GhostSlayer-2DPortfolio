@@ -22,10 +22,10 @@ public class GlobalValue
         g_UserGold = PlayerPrefs.GetInt("UserGold", 9999); // 기본값 9999로 설정
 
         // 스폰 위치 로드
-        //g_SpawnPosition = new Vector2(
-        //    PlayerPrefs.GetFloat("SpawnPosX", 0),
-        //    PlayerPrefs.GetFloat("SpawnPosY", 0)
-        //);
+        g_SpawnPosition = new Vector2(
+            PlayerPrefs.GetFloat("SpawnPosX", 0),
+            PlayerPrefs.GetFloat("SpawnPosY", 0)
+        );
     }
 
     // 게임 데이터 저장
@@ -33,10 +33,10 @@ public class GlobalValue
     {
         PlayerPrefs.SetInt("UserGold", g_UserGold);
 
-        //// 스폰 위치 저장
-        //PlayerPrefs.SetFloat("SpawnPosX", g_SpawnPosition.x);
-        //PlayerPrefs.SetFloat("SpawnPosY", g_SpawnPosition.y);
-        //PlayerPrefs.Save();
+        // 스폰 위치 저장
+        PlayerPrefs.SetFloat("SpawnPosX", g_SpawnPosition.x);
+        PlayerPrefs.SetFloat("SpawnPosY", g_SpawnPosition.y);
+        PlayerPrefs.Save();
     }
 }
 

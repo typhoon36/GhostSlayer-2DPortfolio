@@ -7,21 +7,22 @@ public class BulletPool_Mgr : MonoBehaviour
     [Header("------- Bullet Pool -------")]
     public GameObject AL_BulletPrefab;  //아군 총알 프리팹을 연결할 변수
     public GameObject En_BulletPrefab;  //적군 총알 프리팹을 연결할 변수
+    public GameObject En_BulletPrefab2;  //2번째 총알
     //아군 총알을 미리 생성해 저장할 리스트 자료형
     [HideInInspector] public List<Bullet_Ctrl> m_AllyBulletPool = new List<Bullet_Ctrl>();
     //적군 총알을 미리 생성해 저장할 리스트 자료형
     [HideInInspector] public List<Bullet_Ctrl> m_EnBulletPool = new List<Bullet_Ctrl>();
+    [HideInInspector] public List<Bullet_Ctrl> m_EnBulletPool2 = new List<Bullet_Ctrl>();
 
-    //--- 싱글턴 패턴
+    #region Singleton
     public static BulletPool_Mgr Inst = null;
 
     private void Awake()
     {
         Inst = this;
     }
-    //--- 싱글턴 패턴
+    #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
         //--- Ally Bullet Pool
@@ -54,7 +55,20 @@ public class BulletPool_Mgr : MonoBehaviour
         }
         //--- Enemy Bullet Pool
 
-       
+        //--- Enemy2 Bullet Pool
+        //총알을 생성해 오브젝트 풀에 저장
+        for (int i = 0; i < 120; i++)
+        {
+            //총알 프리팹을 생성
+            GameObject a_Bullet = (GameObject)Instantiate(En_BulletPrefab2);
+            //생성한 총알을 Bullet_Mgr 밑으로 차일드화 하기
+            a_Bullet.transform.SetParent(this.transform);
+            //생성한 총알을 비활성화
+            a_Bullet.SetActive(false);
+            //생성한 총알을 오브젝트 풀에 추가
+            m_EnBulletPool2.Add(a_Bullet.GetComponent<Bullet_Ctrl>());
+        }
+
     }
 
     //// Update is called once per frame
@@ -116,5 +130,29 @@ public class BulletPool_Mgr : MonoBehaviour
         return a_BCtrl;
     }
 
-  
+    public Bullet_Ctrl GetEn2BulletPool()
+    {
+        if (En_BulletPrefab2 == null)
+        {
+            return null;
+        }
+
+        foreach (Bullet_Ctrl a_BNode in m_EnBulletPool2)
+        {
+            if (a_BNode != null && !a_BNode.gameObject.activeSelf)
+            {
+                return a_BNode;
+            }
+        }
+
+        GameObject a_Bullet = Instantiate(En_BulletPrefab2);
+        a_Bullet.transform.SetParent(this.transform);
+        a_Bullet.SetActive(false);
+        Bullet_Ctrl a_BCtrl = a_Bullet.GetComponent<Bullet_Ctrl>();
+        m_EnBulletPool2.Add(a_BCtrl);
+
+        return a_BCtrl;
+    }
+
+
 }

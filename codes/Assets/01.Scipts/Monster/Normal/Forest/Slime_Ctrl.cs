@@ -26,7 +26,7 @@ public class Slime_Ctrl : MonoBehaviour
     #endregion
 
     #region Global
-    bool IsDead = false;
+    public bool IsDead = false;
     Rigidbody2D m_Rd;
     Animator m_Anim;
     SpriteRenderer m_Sprite;

@@ -12,8 +12,6 @@ public class Title_Mgr : MonoBehaviour
 
     public Button Exit_Btn;
 
-
-    // Start is called before the first frame update
     void Start()
     {
         if (Start_Btn != null)
@@ -30,9 +28,11 @@ public class Title_Mgr : MonoBehaviour
             Exit_Btn.onClick.AddListener(() =>
             {
 #if UNITY_EDITOR
+                Fade_Mgr.Inst.IsFadeOut = true;
                 UnityEditor.EditorApplication.isPlaying = false;
 
 #else
+                Fade_Mgr.Inst.IsFadeOut = true;
                 Application.Quit();
 #endif
 
@@ -43,7 +43,7 @@ public class Title_Mgr : MonoBehaviour
     }
 
 
-    //# 효과 
+    #region 효과
     void Update()
     {
 
@@ -68,6 +68,7 @@ public class Title_Mgr : MonoBehaviour
 
 
     }
+    #endregion
 
 
 
