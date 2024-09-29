@@ -1,4 +1,4 @@
-# Ghost Slayer
+# [Unity2D]Ghost Slayer
 
 
 
