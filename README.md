@@ -1,5 +1,13 @@
 # [Unity 2D] Ghost Slayer
 
+<figure class="thrid">  
+<a href="link"><img src="![Title](https://github.com/user-attachments/assets/8e4344ca-50dc-46c5-ae8c-47f2ec9cbb36)"></a>  
+ <a href="link"><img src="이미지경로"></a>  
+ <figcaption>3개이미지</figcaption>
+</figure>
+
+
+
 
 
 
