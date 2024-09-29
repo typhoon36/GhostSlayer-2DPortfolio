@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class GlobalValue
 {
-    public static int g_UserGold = 9999;
+    public static int g_UserGold = 900; // 초기값을 99999로 변경
 
     public static Vector2 g_SpawnPosition = Vector2.zero; // 스폰 위치 저장 변수 수정
 
     // 게임 데이터 로드
     public static void LoadGameData()
     {
-        g_UserGold = PlayerPrefs.GetInt("UserGold", 9999); // 기본값 9999로 설정
+        g_UserGold = PlayerPrefs.GetInt("UserGold", 99999); 
 
         // 스폰 위치 로드
         g_SpawnPosition = new Vector2(
@@ -24,7 +24,8 @@ public class GlobalValue
     // 게임 데이터 저장
     public static void SaveGameData()
     {
-        PlayerPrefs.SetInt("UserGold", g_UserGold);
+        //PlayerPrefs.SetInt("UserGold", g_UserGold);
+        PlayerPrefs.SetInt("UserGold", 99999);
 
         // 스폰 위치 저장
         PlayerPrefs.SetFloat("SpawnPosX", g_SpawnPosition.x);

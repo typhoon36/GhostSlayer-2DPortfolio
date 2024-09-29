@@ -29,9 +29,9 @@ public class Chest_Ctrl : MonoBehaviour
 
     public void Open()
     {
-        // 골드 증가 로직
+
         Game_Mgr.Inst.AddGold(goldAmount);
-        // 상자 비활성화 또는 다른 로직 추가
+
         gameObject.SetActive(false);
     }
 

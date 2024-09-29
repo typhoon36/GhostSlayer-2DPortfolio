@@ -138,8 +138,7 @@ public class Game_Mgr : MonoBehaviour
         #region Menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (IsPointerOverUIObject())
-            {
+            
                 if (m_MenuPanel.activeSelf)
                 {
                     m_MenuPanel.SetActive(false);
@@ -152,19 +151,19 @@ public class Game_Mgr : MonoBehaviour
                     m_DeathPanel.SetActive(false);
                     Time.timeScale = 0;
                 }
-            }
+            
         }
         #endregion
 
         #region Skill
         if (Input.GetKeyDown(KeyCode.K))
         {
-            if (IsPointerOverUIObject())
-            {
+            
                 m_SkillPanel.SetActive(!m_SkillPanel.activeSelf);
-            }
+            
         }
         #endregion
+
     }
 
     #region HP 업데이트
@@ -185,7 +184,7 @@ public class Game_Mgr : MonoBehaviour
         {
             m_ConfirmBtn.onClick.AddListener(() =>
             {
-                if (!IsPointerOverUIObject())
+                if (IsPointerOverUIObject())
                 {
                     // 현재 씬을 다시 로드
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -207,7 +206,7 @@ public class Game_Mgr : MonoBehaviour
         {
             m_CancelBtn.onClick.AddListener(() =>
             {
-                if (!IsPointerOverUIObject())
+                if (IsPointerOverUIObject())
                 {
                     SceneManager.LoadScene("TitleScene");
                     Time.timeScale = 1;

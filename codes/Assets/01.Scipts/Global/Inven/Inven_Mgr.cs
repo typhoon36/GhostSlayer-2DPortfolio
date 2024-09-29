@@ -53,6 +53,10 @@ public class Inven_Mgr : MonoBehaviour
         {
             IsOpen = !IsOpen;
             m_InvenPanel.SetActive(IsOpen);
+            if (IsOpen)
+            {
+                UpdateSlots(); // 인벤토리 창이 열릴 때마다 슬롯 업데이트
+            }
         }
     }
 
@@ -109,6 +113,7 @@ public class Inven_Mgr : MonoBehaviour
             if (Slots[i].itemID == -1)
             {
                 Slots[i].SetItem(itemID);
+                m_Inven.AddItem(itemID); // 인벤토리에 아이템 추가
                 break;
             }
         }
