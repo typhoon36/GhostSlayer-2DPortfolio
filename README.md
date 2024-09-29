@@ -2,7 +2,7 @@
 
 <img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "50%" height= "50%"><img src="https://github.com/user-attachments/assets/8c33b14a-97c0-4432-a144-5854d508a008" width = "50%" height= "50%">
 <img src="https://github.com/user-attachments/assets/4f423518-df04-4690-bb2c-6045624cd272" width = "50%" height= "50%"><img src="https://github.com/user-attachments/assets/6f1f7805-fd56-4f2d-9399-fc359684917c" width = "50%" height= "50%">
-              <p style="text-align:center"><게임 플레이 사진></p>
+                            <p style="text-align:center"><게임 플레이 사진></p>
 
 
 ## 게임 소개
