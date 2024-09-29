@@ -66,11 +66,13 @@
         
 
  ## 기술 문서
-
+[기술 문서](https://docs.google.com/presentation/d/15tD-nxOH4juBukBCzeHNn3QBTxk8-W_Du52wTj0wxL0/edit#slide=id.g301078c2494_0_176)
 
 
  ## velog
 
-
+[블로그](https://velog.io/@typhoon760/posts?tag=%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4)
 
  ## 영상
+
+ [플레이 영상](https://youtu.be/B-tIQGz2CaY)
