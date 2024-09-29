@@ -1,6 +1,6 @@
 # Ghost Slayer
 
-![Title](https://github.com/user-attachments/assets/5bc6f5e9-a3f5-46e9-ba98-c3a261846f2e)
+![Title](https://github.com/user-attachments/assets/5bc6f5e9-a3f5-46e9-ba98-c3a261846f2e) ![Dialog](https://github.com/user-attachments/assets/eae12b7d-b539-441e-bdbe-ff206bf430ef)
 
 
 ## 게임 소개
