@@ -1,6 +1,5 @@
 # Ghost Slayer
 
-<img src="https://github.com/user-attachments/assets/5bc6f5e9-a3f5-46e9-ba98-c3a261846f2e.png" width="200" height="400"/>
 
 
 
