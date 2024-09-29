@@ -1,7 +1,8 @@
 # [Unity 2D] Ghost Slayer
 
 | ------------ | ------------- |
-|![Title](https://github.com/user-attachments/assets/9301ad6c-b241-4f67-8e6e-31575dd0f646)||![Title](https://github.com/user-attachments/assets/9301ad6c-b241-4f67-8e6e-31575dd0f646)|
+|![Title](https://github.com/user-attachments/assets/9301ad6c-b241-4f67-8e6e-31575dd0f646)|
+|![Title](https://github.com/user-attachments/assets/9301ad6c-b241-4f67-8e6e-31575dd0f646)|
 
 
 
