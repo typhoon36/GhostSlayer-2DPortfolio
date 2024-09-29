@@ -1,8 +1,11 @@
 # [Unity 2D] Ghost Slayer
 
-<img src='![Title](https://github.com/user-attachments/assets/8e4344ca-50dc-46c5-ae8c-47f2ec9cbb36)' align='left'/>
+![Title](https://github.com/user-attachments/assets/8e4344ca-50dc-46c5-ae8c-47f2ec9cbb36)
 
-
+<p align="center">
+<img src="https://github.com/user-attachments/assets/8e4344ca-50dc-46c5-ae8c-47f2ec9cbb36.png" width="20%" height="30%">
+<img src="https://github.com/user-attachments/assets/8e4344ca-50dc-46c5-ae8c-47f2ec9cbb36.jpg" width="20%" height="30%">
+</p>
 
 
 
