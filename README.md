@@ -1,7 +1,7 @@
 # [Unity 2D] Ghost Slayer
 
 | ------------ | ------------- |
-![Title](https://github.com/user-attachments/assets/9301ad6c-b241-4f67-8e6e-31575dd0f646)![Title](https://github.com/user-attachments/assets/9301ad6c-b241-4f67-8e6e-31575dd0f646)
+<img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%">
 
 
 
