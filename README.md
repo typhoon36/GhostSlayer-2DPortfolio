@@ -1,9 +1,7 @@
 # [Unity 2D] Ghost Slayer
 
-<img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%">
-<img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%">
-<img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%">
-<img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%">
+<img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%"><img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%">
+<img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%"><img src="https://github.com/user-attachments/assets/8eb70e00-c30e-41a9-9bd4-35f12a426d25" width = "30%" height= "30%">
 
 ## 게임 소개
 
