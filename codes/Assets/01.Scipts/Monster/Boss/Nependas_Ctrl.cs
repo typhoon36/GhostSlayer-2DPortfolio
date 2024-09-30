@@ -16,8 +16,8 @@ public class Nependas_Ctrl : MonoBehaviour
     [Header("HP")]
     public GameObject m_HPGroup;
     public Image m_HPBar;
-    float m_MaxHP = 1000.0f;
-    float m_CurHP = 1000.0f;
+    float m_MaxHP = 500.0f;
+    float m_CurHP = 500.0f;
     #endregion
 
     #region Roar
@@ -72,7 +72,7 @@ public class Nependas_Ctrl : MonoBehaviour
     {
         float distanceToPlayer = Vector3.Distance(transform.position, m_Player.transform.position);
 
-        if (distanceToPlayer < 30.0f) // 플레이어가 보스와 가까이 있을 때
+        if (distanceToPlayer < 70.0f) // 플레이어가 보스와 가까이 있을 때
         {
             m_HPGroup.gameObject.SetActive(true);
             Move();

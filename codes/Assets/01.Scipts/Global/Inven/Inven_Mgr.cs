@@ -85,7 +85,7 @@ public class Inven_Mgr : MonoBehaviour
         }
     }
 
-    void UpdateSlots()
+    public void UpdateSlots()
     {
         for (int i = 0; i < Slots.Length; i++)
         {
@@ -148,12 +148,26 @@ public class Inven_Mgr : MonoBehaviour
 
     void ClearAllSlots()
     {
+        int totalGold = 0;
+
+        foreach (var itemID in m_Inven.m_ItemIDs)
+        {
+            Item item = ItemDB.Inst.GetItemByID(itemID);
+            if (item != null)
+            {
+                totalGold += item.Price / 2; // 아이템 가격의 절반을 골드로 추가
+            }
+        }
+
         m_Inven.m_ItemIDs.Clear();
         foreach (var slot in Slots)
         {
             slot.ClearSlot();
         }
         SaveInventory();
+
+        // 지웠다면 골드값 증가
+        Game_Mgr.Inst.AddGold(totalGold);
     }
 
     public void OnSlotClick(Slot slot)

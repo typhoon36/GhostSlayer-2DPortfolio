@@ -30,7 +30,7 @@ public class Equip_Mgr : MonoBehaviour
             Equip_Panel.SetActive(!Equip_Panel.activeSelf);
             if (Equip_Panel.activeSelf)
             {
-                UpdateEquipments(); 
+                UpdateEquipments();
             }
         }
     }
@@ -43,14 +43,21 @@ public class Equip_Mgr : MonoBehaviour
             return;
         }
 
+        if (slot.itemID == 5) 
+        { 
+            return; 
+        }
+        
+
         foreach (var eSlot in E_Slots)
         {
             if (eSlot.itemID == -1)
             {
                 Item item = ItemDB.Inst.GetItemByID(slot.itemID);
                 eSlot.EquipItem(slot.itemID, item.ItemImg);
-                Inven.Inst.RemoveItem(slot.itemID); 
+                Inven.Inst.RemoveItem(slot.itemID);
                 slot.ClearSlot();
+                Inven_Mgr.Inst.UpdateSlots(); // 인벤토리 슬롯 업데이트
                 SaveEquipments();
                 break;
             }
@@ -63,6 +70,7 @@ public class Equip_Mgr : MonoBehaviour
         {
             Inven_Mgr.Inst.AddItemToInventory(a_ESlot.itemID);
             a_ESlot.UnequipItem();
+            Inven_Mgr.Inst.UpdateSlots(); // 인벤토리 슬롯 업데이트
             SaveEquipments();
         }
     }

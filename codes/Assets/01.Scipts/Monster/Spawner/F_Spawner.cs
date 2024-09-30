@@ -7,13 +7,14 @@ public class F_Spawner : MonoBehaviour
     #region Spawn Variables
     public GameObject[] MonObj;
     public Transform[] MonPos;
-    public float spawnInterval = 8f; // 스폰 간격
-    public float SpawnCheck = 10f; // 스폰 위치 확인 반경
-    public float MinDistanceBetweenMonsters = 20f; // 몬스터 간 최소 거리
+    [HideInInspector] public float spawnInterval = 5f; // 스폰 간격
+    [HideInInspector] public float SpawnCheck = 12f; // 스폰 위치 확인 반경
+    [HideInInspector] public float MinDistanceBetweenMonsters = 20f; // 몬스터 간 최소 거리
 
     float m_SpDelta = 0.0f;
     List<GameObject> MonList = new List<GameObject>();
     #endregion
+
     #region #Singleton Pattern
 
     public static F_Spawner Inst = null;
@@ -40,10 +41,10 @@ public class F_Spawner : MonoBehaviour
                 {
                     int a_Rand = Random.Range(0, MonObj.Length);
 
-                    // MonObj 배열의 3번 인덱스에 해당하는 오브젝트를 스폰할 때 y축으로 +5를 더해줌
-                    if (a_Rand == 3)
+                    // MonObj 배열의 마지막 인덱스에 해당하는 오브젝트를 스폰할 때 y축으로 +2를 더해줌
+                    if (a_Rand == MonObj.Length - 1)
                     {
-                        a_SpawnPos += new Vector3(0, 5, 0);
+                        a_SpawnPos += new Vector3(0, 2, 0);
                     }
 
                     GameObject a_Mon = Instantiate(MonObj[a_Rand], a_SpawnPos, Quaternion.identity);
@@ -66,8 +67,8 @@ public class F_Spawner : MonoBehaviour
             if (monster != null &&
                 Vector3.Distance(monster.transform.position, position) < SpawnCheck)
             {
-                if (!(monster.GetComponent<Tree_Ctrl>()?.IsDead ?? true) &&
-                    !(monster.GetComponent<Slime_Ctrl>()?.IsDead ?? true) &&
+                if (!(monster.GetComponent<Tree_Ctrl>()?.IsDead ?? true) ||
+                    !(monster.GetComponent<Slime_Ctrl>()?.IsDead ?? true) ||
                     !(monster.GetComponent<Bush_Ctrl>()?.IsDead ?? true))
                 {
                     return true;

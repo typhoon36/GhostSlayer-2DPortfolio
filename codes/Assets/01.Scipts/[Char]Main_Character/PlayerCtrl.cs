@@ -13,10 +13,12 @@ public class PlayerCtrl : MonoBehaviour
     #region 이동 & 점프
     Rigidbody2D m_Rd;
     float m_Speed = 10.0f;
-    float JumpForce = 600.0f;
+    float JumpForce = 380.0f;
 
     bool IsDJump = false;
     int m_ReserveJump = 0;
+    float m_DJumpCool = 3f;
+    float m_DJCooldown = 0.0f;
     #endregion
 
     #region 돌진 -- 패시브
@@ -77,6 +79,11 @@ public class PlayerCtrl : MonoBehaviour
         Jump();
         Dash();
 
+
+        //# 더블 점프 쿨타임
+        if (m_DJCooldown > 0)
+            m_DJCooldown -= Time.deltaTime;
+
         //#기본 공격
         if (!Game_Mgr.IsPointerOverUIObject() && Input.GetMouseButton(0))
             StartCoroutine(Attack());
@@ -85,7 +92,7 @@ public class PlayerCtrl : MonoBehaviour
             FireUpdate();
 
         #region 스킬2 회복(현재 체력 회복량 30%)
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && Game_Mgr.Inst.m_MPIcon.fillAmount > 0)
         {
             float healAmount = 30.0f;
             m_CurHP += healAmount;
@@ -240,29 +247,32 @@ public class PlayerCtrl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            m_ReserveJump = 2;
-        }
-
-        if (0 < m_ReserveJump)
-        {
-            this.m_Rd.velocity = new Vector2(this.m_Rd.velocity.x, 0);
-            this.m_Rd.AddForce(Vector2.up * JumpForce);
-            m_ReserveJump = 0;
-            IsDJump = true;
-        }
-
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Space) && IsDJump)
+            if (m_ReserveJump == 0 && m_DJCooldown <= 0)
             {
-                this.m_Rd.velocity = new Vector2(this.m_Rd.velocity.x, 0);
-                this.m_Rd.AddForce(Vector2.up * JumpForce);
-                IsDJump = false;
+                m_ReserveJump = 2;
+            }
+            else if (m_ReserveJump == 1 && IsDJump && m_DJCooldown <= 0)
+            {
+                m_ReserveJump = 2;
             }
         }
 
-        if (0 < m_ReserveJump)
+        if (m_ReserveJump > 0)
+        {
+            this.m_Rd.velocity = new Vector2(this.m_Rd.velocity.x, 0);
+            this.m_Rd.AddForce(Vector2.up * JumpForce);
             m_ReserveJump--;
+            m_Anim.SetBool("IsJump", true);
+            if (m_ReserveJump == 1)
+            {
+                IsDJump = true;
+            }
+            else
+            {
+                IsDJump = false;
+                m_DJCooldown = m_DJumpCool;
+            }
+        }
     }
     #endregion
 
@@ -274,7 +284,7 @@ public class PlayerCtrl : MonoBehaviour
             m_GhostEff.IsGhosting = true;
             m_GhostEff.FlipX = m_Sprite.flipX;
             float DashDir = m_Sprite.flipX ? -1 : 1;
-            m_Rd.velocity = new Vector2(DashDir * 20.0f, m_Rd.velocity.y);
+            m_Rd.velocity = new Vector2(DashDir * 30.0f, m_Rd.velocity.y);
         }
         else if (Input.GetKeyUp(KeyCode.C))
         {
@@ -359,6 +369,7 @@ public class PlayerCtrl : MonoBehaviour
             coll.gameObject.layer == LayerMask.NameToLayer("Lab"))
         {
             IsDJump = false;
+            m_Anim.SetBool("IsJump", false);
         }
     }
 

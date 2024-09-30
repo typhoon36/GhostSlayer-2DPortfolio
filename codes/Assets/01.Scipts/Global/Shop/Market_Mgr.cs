@@ -56,10 +56,19 @@ public class Market_Mgr : MonoBehaviour
             {
                 GlobalValue.g_UserGold -= price;
             }
+
+            m_ContentTxt.text = "고블린 상인 : 좋은 선택이다.유령.";
+            StartCoroutine(ResetContentTxt());
         }
         else
         {
             m_ContentTxt.text = "고블린 상인 : 너,돈이 부족하다..거래 안한다..";
         }
+    }
+
+    IEnumerator ResetContentTxt()
+    {
+        yield return new WaitForSeconds(4f);
+        m_ContentTxt.text = "고블린 상인 : 히히..없는거 없다.만물상이다.";
     }
 }

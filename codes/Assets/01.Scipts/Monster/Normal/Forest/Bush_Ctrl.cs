@@ -13,8 +13,8 @@ public class Bush_Ctrl : MonoBehaviour
     #region HP
     [Header("HP")]
     public Image m_HPBar;
-    float m_MaxHP = 50.0f;
-    float m_CurHP = 50.0f;
+    float m_MaxHP = 30.0f;
+    float m_CurHP = 30.0f;
     #endregion
 
     #region #Trace

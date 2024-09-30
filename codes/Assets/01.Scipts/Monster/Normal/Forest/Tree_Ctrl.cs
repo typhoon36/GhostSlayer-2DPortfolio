@@ -13,8 +13,8 @@ public class Tree_Ctrl : MonoBehaviour
     #region HP
     [Header("HP")]
     public Image m_HPBar;
-    float m_MaxHP = 40.0f;
-    float m_CurHP = 40.0f;
+    float m_MaxHP = 45.0f;
+    float m_CurHP = 45.0f;
     #endregion
 
     #region Attack
@@ -141,7 +141,6 @@ public class Tree_Ctrl : MonoBehaviour
         {
             m_Anim.SetTrigger("IsHit");
             TakeDamage(10);
-            Debug.Log(m_CurHP.ToString());
         }
         else if (coll.gameObject.tag == "Ally_Bullet")
         {

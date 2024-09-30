@@ -34,6 +34,15 @@ public class Item
 
     public bool Equip()
     {
-        return false;
+        if (ItemID == 5)
+        {
+            Debug.Log("아이템 ID가 5인 경우 장착할 수 없습니다.");
+            return false;
+        }
+        else if (ItemID == 6)
+        {
+            Game_Mgr.Inst.RecoverHP(0.2f);
+        }
+        return true;
     }
 }

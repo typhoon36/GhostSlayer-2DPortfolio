@@ -90,7 +90,8 @@ public class Game_Mgr : MonoBehaviour
             {
                 if (IsPointerOverUIObject())
                 {
-                    PlayerPrefs.DeleteAll();
+                    GlobalValue.ResetGameData();
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                 }
             });
         }
@@ -104,7 +105,7 @@ public class Game_Mgr : MonoBehaviour
 #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
 #else
-                                Application.Quit();
+                            Application.Quit();
 #endif
                 }
             });
@@ -138,32 +139,27 @@ public class Game_Mgr : MonoBehaviour
         #region Menu
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            
-                if (m_MenuPanel.activeSelf)
-                {
-                    m_MenuPanel.SetActive(false);
-                    Time.timeScale = 1;
-                }
-                else
-                {
-                    m_MenuPanel.SetActive(true);
-                    m_SkillPanel.SetActive(false);
-                    m_DeathPanel.SetActive(false);
-                    Time.timeScale = 0;
-                }
-            
+            if (m_MenuPanel.activeSelf)
+            {
+                m_MenuPanel.SetActive(false);
+                Time.timeScale = 1;
+            }
+            else
+            {
+                m_MenuPanel.SetActive(true);
+                m_SkillPanel.SetActive(false);
+                m_DeathPanel.SetActive(false);
+                Time.timeScale = 0;
+            }
         }
         #endregion
 
         #region Skill
         if (Input.GetKeyDown(KeyCode.K))
         {
-            
-                m_SkillPanel.SetActive(!m_SkillPanel.activeSelf);
-            
+            m_SkillPanel.SetActive(!m_SkillPanel.activeSelf);
         }
         #endregion
-
     }
 
     #region HP 업데이트
@@ -174,6 +170,18 @@ public class Game_Mgr : MonoBehaviour
             m_HPBar.fillAmount = a_CurHP / a_MaxHP;
         }
     }
+    public void RecoverHP(float amount)
+    {
+        if (m_HPBar != null)
+        {
+            m_HPBar.fillAmount += amount;
+            if (m_HPBar.fillAmount > 1.0f)
+            {
+                m_HPBar.fillAmount = 1.0f;
+            }
+        }
+    }
+
     public void Death()
     {
         m_DeathPanel.SetActive(true);
@@ -280,17 +288,17 @@ public class Game_Mgr : MonoBehaviour
 
 #if !UNITY_EDITOR && (UNITY_IPHONE || UNITY_ANDROID)
 
-                    List<RaycastResult> results = new List<RaycastResult>();
-                    for (int i = 0; i < Input.touchCount; ++i)
-                    {
-                        a_EDCurPos.position = Input.GetTouch(i).position;  
-                        results.Clear();
-                        EventSystem.current.RaycastAll(a_EDCurPos, results);
-                        if (0 < results.Count)
-                            return true;
-                    }
+                            List<RaycastResult> results = new List<RaycastResult>();
+                            for (int i = 0; i < Input.touchCount; ++i)
+                            {
+                                a_EDCurPos.position = Input.GetTouch(i).position;  
+                                results.Clear();
+                                EventSystem.current.RaycastAll(a_EDCurPos, results);
+                                if (0 < results.Count)
+                                    return true;
+                            }
 
-                    return false;
+                            return false;
 #else
         a_EDCurPos.position = Input.mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();
