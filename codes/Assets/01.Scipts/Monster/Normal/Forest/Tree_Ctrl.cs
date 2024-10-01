@@ -193,9 +193,16 @@ public class Tree_Ctrl : MonoBehaviour
         if (m_CurHP <= 0)
         {
             m_Anim.SetTrigger("IsDie");
-            this.gameObject.SetActive(false);
-            Game_Mgr.Inst.AddGold(10);
+            IsDead = true;
+            StartCoroutine(DeathDel(1.2f));
         }
+    }
+
+    IEnumerator DeathDel(float a_Val)
+    {
+        yield return new WaitForSeconds(a_Val);
+        gameObject.SetActive(false);
+        Game_Mgr.Inst.AddGold(10);
     }
     #endregion
 }

@@ -63,6 +63,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+        m_MaxHP = m_CurHP;
         m_Anim = GetComponent<Animator>();
         this.m_Rd = GetComponent<Rigidbody2D>();
         m_Sprite = GetComponent<SpriteRenderer>();
@@ -78,7 +79,6 @@ public class PlayerCtrl : MonoBehaviour
         Move();
         Jump();
         Dash();
-
 
         //# 더블 점프 쿨타임
         if (m_DJCooldown > 0)
@@ -111,11 +111,8 @@ public class PlayerCtrl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Portal_Mgr.Inst.TpPlayer(m_Portal.portalID, transform, m_Portal.m_tpCool, true);
-            }
-            else if (Input.GetKeyDown(KeyCode.B))
-            {
-                Portal_Mgr.Inst.TpPlayer(m_Portal.portalID, transform, m_Portal.m_tpCool, false);
+                Portal_Mgr.Inst.TpPlayer(m_Portal.portalID, m_Portal.connectedPortalID, 
+                    transform, m_Portal.m_tpCool);
             }
         }
         #endregion
@@ -184,13 +181,6 @@ public class PlayerCtrl : MonoBehaviour
         }
         #endregion
 
-        #region # 낙사 처리
-        if (-35 > this.transform.position.y)
-        {
-            gameObject.SetActive(false);
-            Game_Mgr.Inst.Death();
-        }
-        #endregion
     }
 
     void FixedUpdate()
@@ -204,7 +194,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void AHeal()
     {
-        m_CurHP = m_MaxHP;
+        GlobalValue.g_CurHP = GlobalValue.g_MaxHP;
 
         Game_Mgr.Inst.UpdateHP(m_CurHP, m_MaxHP);
         Game_Mgr.Inst.m_MPIcon.fillAmount = 1.0f;
@@ -214,6 +204,7 @@ public class PlayerCtrl : MonoBehaviour
     {
         // 게임 종료 시 현재 위치를 저장
         GlobalValue.g_SpawnPosition = transform.position;
+        GlobalValue.g_CurHP = m_CurHP;
         GlobalValue.SaveGameData();
     }
 
@@ -284,7 +275,7 @@ public class PlayerCtrl : MonoBehaviour
             m_GhostEff.IsGhosting = true;
             m_GhostEff.FlipX = m_Sprite.flipX;
             float DashDir = m_Sprite.flipX ? -1 : 1;
-            m_Rd.velocity = new Vector2(DashDir * 30.0f, m_Rd.velocity.y);
+            m_Rd.velocity = new Vector2(DashDir * 40.0f, m_Rd.velocity.y);
         }
         else if (Input.GetKeyUp(KeyCode.C))
         {
@@ -454,7 +445,6 @@ public class PlayerCtrl : MonoBehaviour
     }
 
     //# 데미지 처리
-    #region Damage
     void OnDamaged(Vector2 a_TargetPos)
     {
         if (m_GhostEff.IsGhosting) return;
@@ -470,6 +460,7 @@ public class PlayerCtrl : MonoBehaviour
         if (m_CurHP <= 0)
         {
             Game_Mgr.Inst.Death();
+            Game_Mgr.Inst.UpdateHP(m_CurHP, m_MaxHP); // HP 텍스트 업데이트
         }
 
         Invoke("OffDamaged", 1.0f);
@@ -479,6 +470,5 @@ public class PlayerCtrl : MonoBehaviour
     {
         m_Sprite.color = new Color(1, 1, 1, 1);
     }
-    #endregion
     #endregion
 }

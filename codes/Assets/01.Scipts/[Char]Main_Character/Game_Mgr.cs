@@ -11,6 +11,7 @@ public class Game_Mgr : MonoBehaviour
     //HUD
     [Header("HUD")]
     public Image m_HPBar;
+    public Text m_HPText;
     public Image m_MPIcon;
     float m_InCrease = 0.01f;
     public Text m_ItemTxt;
@@ -22,6 +23,13 @@ public class Game_Mgr : MonoBehaviour
     public Button m_ResumeBtn;
     public Button m_ResetBtn;
     public Button m_ExitBtn;
+
+    //Reinforce
+    [Header("Reinforce")]
+    public GameObject m_ReinPanel;
+    public Button m_ReinforceBtn;
+    public Text m_HelpTxt;
+    public Button m_RCloseBtn;
 
     //Skill
     [Header("Skill")]
@@ -36,6 +44,13 @@ public class Game_Mgr : MonoBehaviour
     //Info
     [Header("Info")]
     public Text Info_Txt;
+
+    #region MiniMap
+    [Header("MiniMap")]
+    public GameObject m_MiniMap;
+    public Button m_CloseMapBtn;
+    #endregion
+
 
     //gold
     int m_CurGold = 0;
@@ -54,10 +69,18 @@ public class Game_Mgr : MonoBehaviour
         Inst = this;
     }
     #endregion
-
     void Start()
     {
         GlobalValue.LoadGameData(); // 게임 데이터 로드
+
+        // 플레이어의 체력 초기화
+        PlayerCtrl.Inst.m_MaxHP = GlobalValue.g_MaxHP;
+        PlayerCtrl.Inst.m_CurHP = GlobalValue.g_CurHP;
+
+        if (m_HPText != null)
+        {
+            m_HPText.text = PlayerCtrl.Inst.m_CurHP + " / " + PlayerCtrl.Inst.m_MaxHP;
+        }
 
         #region MENU
         if (m_PauseBtn != null)
@@ -105,8 +128,65 @@ public class Game_Mgr : MonoBehaviour
 #if UNITY_EDITOR
                     UnityEditor.EditorApplication.isPlaying = false;
 #else
-                            Application.Quit();
+                    Application.Quit();
 #endif
+                }
+            });
+        }
+        #endregion
+
+        #region Reinforce
+        if (m_ReinforceBtn != null)
+        {
+            m_ReinforceBtn.onClick.AddListener(() =>
+            {
+                if (IsPointerOverUIObject())
+                {
+                    PlayerCtrl.Inst.m_MaxHP += 10;
+                    PlayerCtrl.Inst.m_CurHP += 10;
+                    GlobalValue.g_UserGold -= 100;
+
+                    // 증가된 체력 저장
+                    GlobalValue.g_MaxHP = PlayerCtrl.Inst.m_MaxHP;
+                    GlobalValue.g_CurHP = PlayerCtrl.Inst.m_CurHP;
+                    GlobalValue.SaveGameData();
+
+                    if (m_HelpTxt != null)
+                    {
+                        m_HelpTxt.gameObject.SetActive(true);
+                        m_HelpTxt.text = "체력이 10 증가하였습니다.";
+                    }
+
+                    // HUD 업데이트
+                    UpdateHP(PlayerCtrl.Inst.m_CurHP, PlayerCtrl.Inst.m_MaxHP);
+                }
+            });
+        }
+        if (m_RCloseBtn != null)
+        {
+            m_RCloseBtn.onClick.AddListener(() =>
+            {
+                if (IsPointerOverUIObject())
+                {
+                    m_ReinPanel.SetActive(false);
+                }
+            });
+        }
+        #endregion
+
+        #region MiniMap
+        if (m_MiniMap != null)
+        {
+            m_MiniMap.SetActive(false);
+        }
+
+        if (m_CloseMapBtn != null)
+        {
+            m_CloseMapBtn.onClick.AddListener(() =>
+            {
+                if (IsPointerOverUIObject())
+                {
+                    m_MiniMap.SetActive(false);
                 }
             });
         }
@@ -146,10 +226,16 @@ public class Game_Mgr : MonoBehaviour
             }
             else
             {
+                // 모든 패널 비활성화
                 m_MenuPanel.SetActive(true);
                 m_SkillPanel.SetActive(false);
                 m_DeathPanel.SetActive(false);
-                Time.timeScale = 0;
+                m_ReinPanel.SetActive(false);
+                m_MiniMap.SetActive(false);
+                m_DialogPanel.SetActive(false);
+                m_CDialoguePanel.SetActive(false);
+                m_RDialoguePanel.SetActive(false);
+                Inven_Mgr.Inst.m_InvenPanel.SetActive(false);
             }
         }
         #endregion
@@ -158,6 +244,14 @@ public class Game_Mgr : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.K))
         {
             m_SkillPanel.SetActive(!m_SkillPanel.activeSelf);
+        }
+        #endregion
+
+        #region miniMap
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            m_MiniMap.SetActive(!m_MiniMap.activeSelf);
+            Time.timeScale = m_MiniMap.activeSelf ? 0 : 1;
         }
         #endregion
     }
@@ -169,6 +263,10 @@ public class Game_Mgr : MonoBehaviour
         {
             m_HPBar.fillAmount = a_CurHP / a_MaxHP;
         }
+        if (m_HPText != null)
+        {
+            m_HPText.text = a_CurHP + " / " + a_MaxHP;
+        }
     }
     public void RecoverHP(float amount)
     {
@@ -178,10 +276,10 @@ public class Game_Mgr : MonoBehaviour
             if (m_HPBar.fillAmount > 1.0f)
             {
                 m_HPBar.fillAmount = 1.0f;
+                m_HPText.text = PlayerCtrl.Inst.m_CurHP + " / " + PlayerCtrl.Inst.m_MaxHP;
             }
         }
     }
-
     public void Death()
     {
         m_DeathPanel.SetActive(true);
@@ -202,10 +300,13 @@ public class Game_Mgr : MonoBehaviour
                     GameObject player = GameObject.FindWithTag("Player");
                     if (player != null)
                     {
-                        player.transform.position = new Vector3(122.87f, -23.26f, 0);
+                        player.transform.position = new Vector3(-70f, -23.1f, 0);
                         GlobalValue.g_SpawnPosition = player.transform.position;
                         GlobalValue.SaveGameData();
                     }
+
+                    // HP 텍스트 업데이트
+                    UpdateHP(PlayerCtrl.Inst.m_CurHP, PlayerCtrl.Inst.m_MaxHP);
                 }
             });
         }

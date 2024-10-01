@@ -184,7 +184,7 @@ public class Inven_Mgr : MonoBehaviour
 
                 // 좌표 이동
                 Transform a_PlyTransform = GameObject.FindWithTag("Player").transform;
-                a_PlyTransform.position = new Vector3(123, -23, 0); // 원하는 좌표로 이동
+                a_PlyTransform.position = new Vector3(-70, -23.1f, 0); // 원하는 좌표로 이동
             }
         }
     }
