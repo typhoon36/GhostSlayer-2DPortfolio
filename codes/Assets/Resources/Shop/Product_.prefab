@@ -418,7 +418,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: c3e67834c0c69714590b50e584ebab22, type: 3}
-    m_FontSize: 18
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -540,6 +540,7 @@ MonoBehaviour:
     ItemName: 
     ItemImg: {fileID: 0}
     Price: 0
+    DamageModifier: 0
   m_ItemIcon: {fileID: 3162712917285189208}
   m_ItemPrice: {fileID: 5101972055108223926}
   m_BuyButton: {fileID: 6874078798505500186}

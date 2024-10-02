@@ -8,15 +8,20 @@ using UnityEngine.UI;
 
 public class Game_Mgr : MonoBehaviour
 {
-    //HUD
+    #region HUD
     [Header("HUD")]
     public Image m_HPBar;
     public Text m_HPText;
     public Image m_MPIcon;
     float m_InCrease = 0.01f;
     public Text m_ItemTxt;
+    int m_CurGold = 0;
+    [HideInInspector] public float m_CurHP = 100;
+    [HideInInspector] public float m_MaxHP = 100;
+    Coroutine m_recoverHPCo;
+    #endregion
 
-    //Menu
+    // Menu
     [Header("Menu")]
     public GameObject m_MenuPanel;
     public Button m_PauseBtn;
@@ -24,24 +29,24 @@ public class Game_Mgr : MonoBehaviour
     public Button m_ResetBtn;
     public Button m_ExitBtn;
 
-    //Reinforce
+    // Reinforce
     [Header("Reinforce")]
     public GameObject m_ReinPanel;
     public Button m_ReinforceBtn;
     public Text m_HelpTxt;
     public Button m_RCloseBtn;
 
-    //Skill
+    // Skill
     [Header("Skill")]
     public GameObject m_SkillPanel;
 
-    //Death
+    // Death
     [Header("Death")]
     public GameObject m_DeathPanel;
     public Button m_ConfirmBtn;
     public Button m_CancelBtn;
 
-    //Info
+    // Info
     [Header("Info")]
     public Text Info_Txt;
 
@@ -51,15 +56,12 @@ public class Game_Mgr : MonoBehaviour
     public Button m_CloseMapBtn;
     #endregion
 
-
-    //gold
-    int m_CurGold = 0;
-
     #region Dialog
     [Header("Dialog")]
     public GameObject m_DialogPanel;
     public GameObject m_CDialoguePanel;
     public GameObject m_RDialoguePanel;
+    public GameObject m_PostDialoguePanel;
     #endregion
 
     #region Singleton
@@ -69,18 +71,14 @@ public class Game_Mgr : MonoBehaviour
         Inst = this;
     }
     #endregion
+
     void Start()
     {
-        GlobalValue.LoadGameData(); // 게임 데이터 로드
+        GlobalValue.LoadGameData();
+        m_MaxHP = GlobalValue.g_MaxHP;
+        m_CurHP = GlobalValue.g_CurHP;
 
-        // 플레이어의 체력 초기화
-        PlayerCtrl.Inst.m_MaxHP = GlobalValue.g_MaxHP;
-        PlayerCtrl.Inst.m_CurHP = GlobalValue.g_CurHP;
-
-        if (m_HPText != null)
-        {
-            m_HPText.text = PlayerCtrl.Inst.m_CurHP + " / " + PlayerCtrl.Inst.m_MaxHP;
-        }
+        UpdateHP();
 
         #region MENU
         if (m_PauseBtn != null)
@@ -115,6 +113,7 @@ public class Game_Mgr : MonoBehaviour
                 {
                     GlobalValue.ResetGameData();
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+                    Time.timeScale = 1;
                 }
             });
         }
@@ -142,13 +141,12 @@ public class Game_Mgr : MonoBehaviour
             {
                 if (IsPointerOverUIObject())
                 {
-                    PlayerCtrl.Inst.m_MaxHP += 10;
-                    PlayerCtrl.Inst.m_CurHP += 10;
+                    Game_Mgr.Inst.m_MaxHP += 10;
+                    Game_Mgr.Inst.m_CurHP += 10;
                     GlobalValue.g_UserGold -= 100;
 
-                    // 증가된 체력 저장
-                    GlobalValue.g_MaxHP = PlayerCtrl.Inst.m_MaxHP;
-                    GlobalValue.g_CurHP = PlayerCtrl.Inst.m_CurHP;
+                    GlobalValue.g_MaxHP = Game_Mgr.Inst.m_MaxHP;
+                    GlobalValue.g_CurHP = Game_Mgr.Inst.m_CurHP;
                     GlobalValue.SaveGameData();
 
                     if (m_HelpTxt != null)
@@ -157,8 +155,7 @@ public class Game_Mgr : MonoBehaviour
                         m_HelpTxt.text = "체력이 10 증가하였습니다.";
                     }
 
-                    // HUD 업데이트
-                    UpdateHP(PlayerCtrl.Inst.m_CurHP, PlayerCtrl.Inst.m_MaxHP);
+                    UpdateHP();
                 }
             });
         }
@@ -204,7 +201,7 @@ public class Game_Mgr : MonoBehaviour
                 m_MPIcon.fillAmount = 1.0f;
             }
         }
-        // 골드값
+
         if (m_ItemTxt != null)
         {
             m_ItemTxt.text = GlobalValue.g_UserGold.ToString("N0");
@@ -226,7 +223,6 @@ public class Game_Mgr : MonoBehaviour
             }
             else
             {
-                // 모든 패널 비활성화
                 m_MenuPanel.SetActive(true);
                 m_SkillPanel.SetActive(false);
                 m_DeathPanel.SetActive(false);
@@ -256,30 +252,50 @@ public class Game_Mgr : MonoBehaviour
         #endregion
     }
 
-    #region HP 업데이트
-    public void UpdateHP(float a_CurHP, float a_MaxHP)
+    #region HP
+    public void StartRecoverHP()
     {
-        if (m_HPBar != null)
+        if (m_recoverHPCo != null)
         {
-            m_HPBar.fillAmount = a_CurHP / a_MaxHP;
+            StopCoroutine(m_recoverHPCo);
         }
-        if (m_HPText != null)
+        m_recoverHPCo = StartCoroutine(RecoverHPOverTime());
+    }
+
+    public void StopRecoverHP()
+    {
+        if (m_recoverHPCo != null)
         {
-            m_HPText.text = a_CurHP + " / " + a_MaxHP;
+            StopCoroutine(m_recoverHPCo);
+            m_recoverHPCo = null;
         }
     }
+
+    private IEnumerator RecoverHPOverTime()
+    {
+        while (true)
+        {
+            RecoverHP(1f);
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
     public void RecoverHP(float amount)
     {
-        if (m_HPBar != null)
-        {
-            m_HPBar.fillAmount += amount;
-            if (m_HPBar.fillAmount > 1.0f)
-            {
-                m_HPBar.fillAmount = 1.0f;
-                m_HPText.text = PlayerCtrl.Inst.m_CurHP + " / " + PlayerCtrl.Inst.m_MaxHP;
-            }
-        }
+        m_CurHP = Mathf.Min(m_CurHP + amount, m_MaxHP);
+        GlobalValue.g_CurHP = m_CurHP;
+        UpdateHP();
     }
+
+
+    public void UpdateHP()
+    {
+        m_HPBar.fillAmount = m_CurHP / m_MaxHP;
+        m_HPText.text = $"{m_CurHP} / {m_MaxHP}";
+    }
+    #endregion
+
+    #region Death
     public void Death()
     {
         m_DeathPanel.SetActive(true);
@@ -292,11 +308,9 @@ public class Game_Mgr : MonoBehaviour
             {
                 if (IsPointerOverUIObject())
                 {
-                    // 현재 씬을 다시 로드
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                     Time.timeScale = 1;
 
-                    // 플레이어의 위치를 마지막 저장된 스폰 위치로 설정
                     GameObject player = GameObject.FindWithTag("Player");
                     if (player != null)
                     {
@@ -305,8 +319,9 @@ public class Game_Mgr : MonoBehaviour
                         GlobalValue.SaveGameData();
                     }
 
-                    // HP 텍스트 업데이트
-                    UpdateHP(PlayerCtrl.Inst.m_CurHP, PlayerCtrl.Inst.m_MaxHP);
+                    if (0 > GlobalValue.g_CurHP)
+                        m_HPText.text = "0" + " / " + Mathf.FloorToInt(GlobalValue.g_MaxHP);
+                    UpdateHP();
                 }
             });
         }
@@ -330,14 +345,11 @@ public class Game_Mgr : MonoBehaviour
     {
         if (m_CurGold <= int.MaxValue - a_Val)
             m_CurGold += a_Val;
-
         else
             m_CurGold = int.MaxValue;
 
-        //로컬 저장 유저 보유 골드값
         if (GlobalValue.g_UserGold <= int.MaxValue - a_Val)
             GlobalValue.g_UserGold += a_Val;
-
         else
             GlobalValue.g_UserGold = int.MaxValue;
 
@@ -354,6 +366,7 @@ public class Game_Mgr : MonoBehaviour
         {
             bool hasItem0 = false;
             bool hasItem3 = false;
+            float TotalAtk = 0;
 
             foreach (E_Slot slot in FindObjectsOfType<E_Slot>())
             {
@@ -365,15 +378,20 @@ public class Game_Mgr : MonoBehaviour
                 {
                     hasItem3 = true;
                 }
+
+                if (slot.itemID != -1)
+                {
+                    TotalAtk += ItemDB.Inst.m_ItemDB[slot.itemID].DamageModifier;
+                }
             }
 
             if (hasItem3)
             {
-                Info_Txt.text = "공격력 : 30\n방어력 : 10";
+                Info_Txt.text = "공격력 : " + TotalAtk + "\n방어력 : 10";
             }
             else if (hasItem0)
             {
-                Info_Txt.text = "공격력 : 10\n방어력 : 10";
+                Info_Txt.text = "공격력 : " + TotalAtk + "\n방어력 : 10";
             }
             else
             {
@@ -383,23 +401,21 @@ public class Game_Mgr : MonoBehaviour
     }
     #endregion
 
-    public static bool IsPointerOverUIObject() //UGUI의 UI들이 먼저 피킹되는지 확인하는 함수
+    public static bool IsPointerOverUIObject()
     {
         PointerEventData a_EDCurPos = new PointerEventData(EventSystem.current);
 
 #if !UNITY_EDITOR && (UNITY_IPHONE || UNITY_ANDROID)
-
-                            List<RaycastResult> results = new List<RaycastResult>();
-                            for (int i = 0; i < Input.touchCount; ++i)
-                            {
-                                a_EDCurPos.position = Input.GetTouch(i).position;  
-                                results.Clear();
-                                EventSystem.current.RaycastAll(a_EDCurPos, results);
-                                if (0 < results.Count)
-                                    return true;
-                            }
-
-                            return false;
+        List<RaycastResult> results = new List<RaycastResult>();
+        for (int i = 0; i < Input.touchCount; ++i)
+        {
+            a_EDCurPos.position = Input.GetTouch(i).position;
+            results.Clear();
+            EventSystem.current.RaycastAll(a_EDCurPos, results);
+            if (0 < results.Count)
+                return true;
+        }
+        return false;
 #else
         a_EDCurPos.position = Input.mousePosition;
         List<RaycastResult> results = new List<RaycastResult>();

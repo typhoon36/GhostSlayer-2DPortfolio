@@ -1,10 +1,10 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 
-//# º¹¼öÀÇ ´ëÈ­ ³»¿ëÀ» ÀúÀåÇÒ ¼ö ÀÖ´Â Å¬·¡½º//Custom Class Á¢±Ù
+//# ë³µìˆ˜ì˜ ëŒ€í™” ë‚´ìš©ì„ ì €ì¥í•  ìˆ˜ ìˆëŠ” í´ë˜ìŠ¤//Custom Class ì ‘ê·¼
 [System.Serializable]
 public class Dialogue
 {
@@ -18,23 +18,20 @@ public class Dailog_Ctrl : MonoBehaviour
     [SerializeField] GameObject m_DialogPanel;
     [SerializeField] private Text Txt_Dialogue;
     [SerializeField] private Button Exit_Btn;
-    [SerializeField] private Button Next_Btn; // ´ÙÀ½ ´ë»ç ¹öÆ° Ãß°¡
+    [SerializeField] private Button Next_Btn;
 
-    bool IsDialogue = false; // ´ëÈ­ ÁßÀÎÁö Ã¼Å©
-    int Cnt = 0; // ´ë»ç°¡ ¾ó¸¶³ª ÁøÇàµÇ¾ú´ÂÁö ¾Ë·ÁÁÙ º¯¼ö
-
+    bool IsDialogue = false;
+    int Cnt = 0;
     [SerializeField] private Dialogue[] m_Dialog;
 
-    // ´ëÈ­ ½ÃÀÛÀº ¹öÆ°À¸·Î ½ÃÀÛ
     public void ShowDialogue()
     {
-        if (IsDialogue) return; // ´ëÈ­°¡ ÀÌ¹Ì ÁøÇà ÁßÀÌ¸é ¸Ş¼­µå Á¾·á
+        if (IsDialogue) return;
 
         OnOff(true);
         Cnt = 0;
-        NextDialogue(); // Ã¹ ¹øÂ° ´ë»ç Ç¥½Ã
+        NextDialogue();
 
-        // ´ÙÀ½ ´ë»ç ¹öÆ° Å¬¸¯ ÀÌº¥Æ® Ãß°¡
         Next_Btn.gameObject.SetActive(true);
         Next_Btn.onClick.RemoveAllListeners();
         Next_Btn.onClick.AddListener(NextDialogue);
@@ -55,14 +52,14 @@ public class Dailog_Ctrl : MonoBehaviour
         }
         else
         {
-            OnOff(false); // ´ë»ç ³¡
-            Next_Btn.gameObject.SetActive(false); // ´ÙÀ½ ´ë»ç ¹öÆ° ¼û±â±â
+            OnOff(false);
+            Next_Btn.gameObject.SetActive(false);
             Exit_Btn.gameObject.SetActive(true);
             Exit_Btn.onClick.RemoveAllListeners();
             Exit_Btn.onClick.AddListener(() =>
             {
                 m_DialogPanel.gameObject.SetActive(false);
-                Init(); // ÆĞ³ÎÀÌ ´İÈú ¶§ ÃÊ±âÈ­
+                Init();
             });
             IsDialogue = false;
         }
@@ -73,7 +70,8 @@ public class Dailog_Ctrl : MonoBehaviour
         OnOff(false);
         Next_Btn.gameObject.SetActive(true);
         Exit_Btn.gameObject.SetActive(false);
-        IsDialogue = false; // ÃÊ±âÈ­ ½Ã ´ëÈ­ »óÅÂµµ ÃÊ±âÈ­
-        Cnt = 0; // ÃÊ±âÈ­ ½Ã ´ë»ç ÁøÇàµµ ÃÊ±âÈ­
+        IsDialogue = false;
+        Cnt = 0;
+        ShowDialogue(); // ì´ˆê¸°í™” í›„ ì²« ë²ˆì§¸ ë‹¤ì´ì–¼ë¡œê·¸ í‘œì‹œ
     }
 }

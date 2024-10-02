@@ -293,6 +293,7 @@ public class Nependas_Ctrl : MonoBehaviour
             IsDead = true;
             m_Anim.SetTrigger("IsDead");
             Destroy(this.gameObject);
+            Game_Mgr.Inst.AddGold(1000);
             m_HPGroup.SetActive(false);
             m_NextPortal.gameObject.SetActive(true);
         }

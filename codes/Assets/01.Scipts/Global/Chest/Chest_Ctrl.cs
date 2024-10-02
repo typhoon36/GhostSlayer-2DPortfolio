@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chest_Ctrl : MonoBehaviour
 {
-    [HideInInspector]public int goldAmount = 500;
+    [HideInInspector] public int goldAmount = 700;
     Animator m_Anim;
     bool isOpened = false;
 
@@ -29,8 +29,9 @@ public class Chest_Ctrl : MonoBehaviour
 
     public void Open()
     {
-
         Game_Mgr.Inst.AddGold(goldAmount);
+
+    
 
         gameObject.SetActive(false);
     }

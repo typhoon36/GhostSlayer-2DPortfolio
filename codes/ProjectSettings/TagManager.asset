@@ -18,6 +18,7 @@ TagManager:
   - Crow
   - Robot
   - Chest
+  - Post
   layers:
   - Default
   - TransparentFX

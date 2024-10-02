@@ -5,15 +5,11 @@ using UnityEngine;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    #region HP
-    [HideInInspector] public float m_MaxHP = 100.0f;
-    [HideInInspector] public float m_CurHP = 100.0f;
-    #endregion
 
     #region 이동 & 점프
     Rigidbody2D m_Rd;
     float m_Speed = 10.0f;
-    float JumpForce = 380.0f;
+    float JumpForce = 400.0f;
 
     bool IsDJump = false;
     int m_ReserveJump = 0;
@@ -51,6 +47,7 @@ public class PlayerCtrl : MonoBehaviour
     GameObject m_Crow = null;
     GameObject m_Robot = null;
     GameObject m_Chest = null;
+    GameObject m_Post = null;
     #endregion
 
     #region Singleton
@@ -63,7 +60,6 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
-        m_MaxHP = m_CurHP;
         m_Anim = GetComponent<Animator>();
         this.m_Rd = GetComponent<Rigidbody2D>();
         m_Sprite = GetComponent<SpriteRenderer>();
@@ -94,15 +90,7 @@ public class PlayerCtrl : MonoBehaviour
         #region 스킬2 회복(현재 체력 회복량 30%)
         if (Input.GetKeyDown(KeyCode.Q) && Game_Mgr.Inst.m_MPIcon.fillAmount > 0)
         {
-            float healAmount = 30.0f;
-            m_CurHP += healAmount;
-            if (m_MaxHP < m_CurHP)
-                m_CurHP = m_MaxHP;
-
-            Game_Mgr.Inst.UpdateHP(m_CurHP, m_MaxHP);
-
-            // MpIcon의 회복량 만큼 줄이기
-            Game_Mgr.Inst.m_MPIcon.fillAmount -= healAmount / m_MaxHP;
+            Game_Mgr.Inst.RecoverHP(3.0f);
         }
         #endregion
 
@@ -111,7 +99,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Portal_Mgr.Inst.TpPlayer(m_Portal.portalID, m_Portal.connectedPortalID, 
+                Portal_Mgr.Inst.TpPlayer(m_Portal.portalID, m_Portal.connectedPortalID,
                     transform, m_Portal.m_tpCool);
             }
         }
@@ -150,6 +138,13 @@ public class PlayerCtrl : MonoBehaviour
         if (m_Chest != null && Input.GetKeyDown(KeyCode.F))
         {
             OpenChest();
+        }
+        #endregion
+
+        #region 표지판 상호작용
+        if (m_Post != null && Input.GetKeyDown(KeyCode.F))
+        {
+            Game_Mgr.Inst.m_PostDialoguePanel.SetActive(true);
         }
         #endregion
 
@@ -194,9 +189,10 @@ public class PlayerCtrl : MonoBehaviour
 
     void AHeal()
     {
-        GlobalValue.g_CurHP = GlobalValue.g_MaxHP;
+        Game_Mgr.Inst.m_HPBar.fillAmount = 1.0f;
+        Game_Mgr.Inst.m_CurHP = Game_Mgr.Inst.m_MaxHP;
+        Game_Mgr.Inst.m_HPText.text = GlobalValue.g_CurHP.ToString() + " / " + Game_Mgr.Inst.m_MaxHP.ToString();
 
-        Game_Mgr.Inst.UpdateHP(m_CurHP, m_MaxHP);
         Game_Mgr.Inst.m_MPIcon.fillAmount = 1.0f;
     }
 
@@ -204,7 +200,9 @@ public class PlayerCtrl : MonoBehaviour
     {
         // 게임 종료 시 현재 위치를 저장
         GlobalValue.g_SpawnPosition = transform.position;
-        GlobalValue.g_CurHP = m_CurHP;
+        //게임 종료시 체력 저장
+        GlobalValue.g_CurHP = Game_Mgr.Inst.m_CurHP;
+
         GlobalValue.SaveGameData();
     }
 
@@ -308,17 +306,14 @@ public class PlayerCtrl : MonoBehaviour
     }
     #endregion
 
-
     #region skill_1
     void FireUpdate()
     {
         // m_MPIcon이 0이면 총을 쏘지 않음
         if (Game_Mgr.Inst.m_MPIcon.fillAmount <= 0) return;
 
-
         // m_ShotTime이 0보다 크면 총을 쏘지 않음
         if (m_ShotTime > 0) return;
-
 
         Vector3 a_Target = m_Sprite.flipX ? Vector3.left : Vector3.right;
         a_Target.Normalize();
@@ -351,7 +346,6 @@ public class PlayerCtrl : MonoBehaviour
     }
     #endregion
 
-
     //------ 충돌 및 데미지 관련
     #region 충돌 & 데미지
     void OnCollisionEnter2D(Collision2D coll)
@@ -370,18 +364,15 @@ public class PlayerCtrl : MonoBehaviour
         if (coll.gameObject.tag == "Boss")
             OnDamaged(coll.transform.position);
 
-
         else if (coll.gameObject.tag == "Monster")
             OnDamaged(coll.transform.position);
 
         else if (coll.gameObject.tag == "Enermy_Bullet")
             OnDamaged(coll.transform.position);
 
-
         else if (coll.gameObject.tag == "Trap")
             OnDamaged(coll.transform.position);
         #endregion
-
 
         else if (coll.gameObject.tag == "Portal")
         {
@@ -399,16 +390,19 @@ public class PlayerCtrl : MonoBehaviour
         else if (coll.gameObject.tag  == "Witch")
             m_Witch = coll.gameObject;
 
-
         else if (coll.gameObject.tag == "Crow")
             m_Crow = coll.gameObject;
 
         else if (coll.gameObject.tag == "Robot")
             m_Robot = coll.gameObject;
 
-
         else if (coll.gameObject.tag == "Chair")
             m_Chair = coll.gameObject;
+
+        
+
+        else if (coll.gameObject.tag == "Post")
+            m_Post = coll.gameObject;
         #endregion
 
         else if (coll.gameObject.tag == "Chest")
@@ -430,9 +424,11 @@ public class PlayerCtrl : MonoBehaviour
         else if (coll.gameObject.tag == "Witch")
             m_Witch = null;
 
-
         else if (coll.gameObject.tag == "Crow")
             m_Crow = null;
+
+        else if (coll.gameObject.tag == "Post")
+            m_Post = null;
 
         else if (coll.gameObject.tag == "Robot")
             m_Robot = null;
@@ -454,13 +450,15 @@ public class PlayerCtrl : MonoBehaviour
         int dir = transform.position.x - a_TargetPos.x > 0 ? 1 : -1;
         m_Rd.AddForce(new Vector2(dir * 2, 2), ForceMode2D.Impulse); // 밀려나는 방향과 힘 조정
 
-        m_CurHP -= 10.0f;
-        Game_Mgr.Inst.UpdateHP(m_CurHP, m_MaxHP);
+        Game_Mgr.Inst.m_HPBar.fillAmount -= 0.2f;
 
-        if (m_CurHP <= 0)
+        Game_Mgr.Inst.m_CurHP -= 20.0f;
+
+        Game_Mgr.Inst.m_HPText.text = Game_Mgr.Inst.m_CurHP.ToString() + " / " + Game_Mgr.Inst.m_MaxHP.ToString();
+
+        if (Game_Mgr.Inst.m_CurHP <= 0)
         {
             Game_Mgr.Inst.Death();
-            Game_Mgr.Inst.UpdateHP(m_CurHP, m_MaxHP); // HP 텍스트 업데이트
         }
 
         Invoke("OffDamaged", 1.0f);

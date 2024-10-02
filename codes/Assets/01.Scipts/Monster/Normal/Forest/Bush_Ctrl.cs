@@ -142,7 +142,7 @@ public class Bush_Ctrl : MonoBehaviour
         else if (coll.gameObject.tag == "Ally_Bullet")
         {
             m_Anim.SetTrigger("IsHurt");
-            TakeDamage(10);
+            TakeDamage(20);
         }
     }
 

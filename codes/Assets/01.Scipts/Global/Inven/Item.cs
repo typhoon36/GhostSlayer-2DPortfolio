@@ -41,7 +41,8 @@ public class Item
         }
         else if (ItemID == 6)
         {
-            Game_Mgr.Inst.RecoverHP(0.2f);
+            // 아이템 ID가 6인 경우 HP를 서서히 회복합니다.
+            Game_Mgr.Inst.StartRecoverHP(); // HP 회복 시작
         }
         return true;
     }

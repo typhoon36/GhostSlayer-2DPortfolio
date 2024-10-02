@@ -43,11 +43,10 @@ public class Equip_Mgr : MonoBehaviour
             return;
         }
 
-        if (slot.itemID == 5) 
-        { 
-            return; 
+        if (slot.itemID == 5)
+        {
+            return;
         }
-        
 
         foreach (var eSlot in E_Slots)
         {
@@ -57,7 +56,7 @@ public class Equip_Mgr : MonoBehaviour
                 eSlot.EquipItem(slot.itemID, item.ItemImg);
                 Inven.Inst.RemoveItem(slot.itemID);
                 slot.ClearSlot();
-                Inven_Mgr.Inst.UpdateSlots(); // 인벤토리 슬롯 업데이트
+                Inven_Mgr.Inst.UpdateSlots();
                 SaveEquipments();
                 break;
             }
@@ -70,7 +69,7 @@ public class Equip_Mgr : MonoBehaviour
         {
             Inven_Mgr.Inst.AddItemToInventory(a_ESlot.itemID);
             a_ESlot.UnequipItem();
-            Inven_Mgr.Inst.UpdateSlots(); // 인벤토리 슬롯 업데이트
+            Inven_Mgr.Inst.UpdateSlots();
             SaveEquipments();
         }
     }
